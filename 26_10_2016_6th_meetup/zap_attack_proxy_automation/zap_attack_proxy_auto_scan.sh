@@ -65,9 +65,9 @@ echo "step 3 ascan id: $aScanId"
 #step 4
 ###########################################
 
-curl -s "${zapHost}/OTHER/core/other/htmlreport/?apikey=${apiKey}" > /home/mouse/projects/meetup_talk_26_10_2016/share/report.html
+curl -s "${zapHost}/OTHER/core/other/htmlreport/?apikey=${apiKey}" > report.html
 
-echo 'step 4 report file: /home/mouse/projects/meetup_talk_26_10_2016/share/report.html'
+echo 'step 4 report file: report.html'
 
 sleep 2
 

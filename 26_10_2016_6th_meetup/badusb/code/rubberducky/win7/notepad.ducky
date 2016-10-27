@@ -1,0 +1,7 @@
+REM Start a notepad
+REM
+
+DELAY 5000
+GUI r
+DELAY 500
+STRING notepad

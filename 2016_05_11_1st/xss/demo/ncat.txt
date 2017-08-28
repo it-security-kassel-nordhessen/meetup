@@ -1,0 +1,3 @@
+#start listener waiting for reverse shell
+
+ncat -lvp 4444

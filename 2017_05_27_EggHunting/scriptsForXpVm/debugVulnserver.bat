@@ -1,0 +1,1 @@
+cscript debugVulnserver.vbs

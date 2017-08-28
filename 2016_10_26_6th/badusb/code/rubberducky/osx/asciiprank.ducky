@@ -1,0 +1,73 @@
+REM java -jar encode.jar -i asciiprank.ducky -l de
+REM Title: OSX Ascii Prank
+REM Description: Tells you to fuck off
+
+REM start terminal
+DELAY 500
+GUI SPACE
+DELAY 500
+STRING terminal
+DELAY 500
+ENTER
+
+DELAY 2000
+GUI W
+
+DELAY 500
+GUI SPACE
+STRING terminal
+DELAY 500
+ENTER
+
+REM start bash
+DELAY 1500
+STRING bash
+
+REM print fuck off
+DELAY 500 
+ENTER
+STRING echo '
+ENTER
+STRING                 $$$$
+ENTER
+STRING               $$    $$
+ENTER
+STRING               $$    $$
+ENTER
+STRING               $$    $$
+ENTER
+STRING               $$    $$
+ENTER
+STRING               $$    $$
+ENTER
+STRING           $$$$$$    $$$$$$
+ENTER
+STRING         $$    $$    $$    $$$$
+ENTER
+STRING         $$    $$    $$    $$  $$
+ENTER 
+STRING $$$$$$  $$    $$    $$    $$    $$
+ENTER
+STRING $$    $$$$                $$    $$
+ENTER
+STRING $$      $$                      $$
+ENTER
+STRING   $$    $$                      $$
+ENTER
+STRING    $$$  $$                      $$
+ENTER
+STRING     $$                          $$
+ENTER
+STRING      $$$                        $$
+ENTER
+STRING       $$                      $$$
+ENTER
+STRING        $$$                    $$
+ENTER
+STRING         $$                    $$
+ENTER
+STRING          $$$                $$$
+ENTER
+STRING           $$                $$
+ENTER
+STRING           $$$$$$$$$$$$$$$$$$$$

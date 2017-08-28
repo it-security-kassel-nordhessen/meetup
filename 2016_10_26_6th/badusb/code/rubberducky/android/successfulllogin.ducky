@@ -1,0 +1,7 @@
+REM example how to login with sim in smartphone
+
+DELAY 2000
+DOWN
+DELAY 500
+STRING 1234
+ENTER

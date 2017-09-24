@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Einführung - Kryptoanalysis</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Kryptoanalyse</h1>
+					<h3>Workshop Krypto-Analyse / Cracking Code</h3>
+					<p>
+						<small>Created by Matthias Altmann</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Themen heute</h2>
+					<table>
+						<tbody>
+							<tr><td>Einführung</td><td>11:00-11:15</td></tr>
+						  <tr><td>Monoalphabetisch</td><td>11:15-12:15</td></tr>
+							<tr><td>Polyalphabetisch</td><td>12:15-13:00</td></tr>
+							<tr><td>Mittag</td><td>13:00-13:30</td><tr>
+							<tr><td>Mechanisierung - Enigma</td><td>13:30-14:30</td></tr>
+							<tr><td>Symmetrisch</td><td>14:30-15:30</td></tr>
+							<tr><td>Asymmetrisch</td><td>15:30-16:30</td></tr>
+							<tr><td>Quantencomputer</td><td>16:30-17:00</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Einführung/Motivation</h2>
+					<p>Steganographie</p>
+					<p>Kryptographie</p>
+				</section>
+
+				<section>
+					<h2>Monoalphabetisch</h2>
+					<p>Cäsar-Chiffre</p>
+					<figure>
+						<img height="400" data-src="imgs/caesar-2028610_1280.png" alt="padlock">
+						<figcaption style="font-size:12px">https://pixabay.com, 3.5.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+							<img height="600" data-src="imgs/caesarcryptedhello.png" alt="padlock">
+			 </section>
+
+			 <section>
+						 <img height="600" data-src="imgs/caesardecryptedhello.png" alt="padlock">
+			</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Wir werden heute eine kleine Konversation aufbauen</td></tr>
+							<tr><td>Das heißt stellt euch auf einen kleine Unterredung mit jemandem ein</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Wir zählen durch<td></tr>
+							<tr><td>Merke dir deine Zahl<td></tr>
+							<tr><td>Du bist Person A</td><tr>
+							<tr><td>Schreibe einen kleinen Text für eine beliebige Person im Raum</td></tr>
+						  <tr><td>Minimum 10 Buchstaben<td></tr>
+							<tr><td>Rotiere die Buchstaben</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Schreibe den chiffrierten Text auf einen Extrazettel</td><tr>
+							<tr><td>Gebe den Text weiter an Person B</td></tr>
+							<tr><td>Person B = x+10 modulo Anzahl Teilnehmer<td></tr>
+							<tr><td>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Person B: Versuche den Code zu knacken</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Person B: Erzeuge eine Datei mit einem Antworttext für A</td></tr>
+							<tr><td>Schreibe diesen Text in eine Datei:</td></tr>
+							<tr><td>Name: DeineNummer_caesar.md</td></tr>
+							<tr><td>Der Text kann bis zu 255 Zeichen haben</td><tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Person B: Lade die Datei unter</td></tr>
+							<tr><td>https://crypto.machbar.it/index.php/login</td></tr>
+							<tr><td>im Verzeichnis Exercises/1/ hoch
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Person A: Lade dir Datei runter</td></tr>
+							<tr><td>Versuche den Code zu knacken</td></tr>
+							<tr><td>Verwende das Tool unter tools/1 zum knacken</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Kevin Mitnick - Ghost in the Wires</td></tr>
+							<tr><td>Versuche die Einführungszitate aus einem Kapitel</td></tr>
+							<tr><td>mit einer ungeraden Zahl bis 19 zu knacken</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Monoalphabetisch</h2>
+					<p>Krypto-Knack-Beispiel<p>
+				</section>
+
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/mariastuart0.png" alt="MariaStuart0">
+						<figcaption style="font-size:12px">http://www.arte.tv/de/videos/061725-000-A/elisabeth-i-krieg-dem-terror Arte Mediathek Elisabeth I - Krieg dem Terror, abgerufen 3.5.17</figcaption>
+					</figure>
+				</section>
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/mariastuart1.png" alt="MariaStuart1">
+						<figcaption style="font-size:12px">http://www.arte.tv/de/videos/061725-000-A/elisabeth-i-krieg-dem-terror Arte Mediathek Elisabeth I - Krieg dem Terror, abgerufen 3.5.17</figcaption>
+					</figure>
+				</section>
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/mariastuart2.png" alt="MariaStuart2">
+						<figcaption style="font-size:12px">http://www.arte.tv/de/videos/061725-000-A/elisabeth-i-krieg-dem-terror Arte Mediathek Elisabeth I - Krieg dem Terror, abgerufen 3.5.17</figcaption>
+					</figure>
+				</section>
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/mariastuart3.png" alt="MariaStuart3">
+						<figcaption style="font-size:12px">http://www.arte.tv/de/videos/061725-000-A/elisabeth-i-krieg-dem-terror Arte Mediathek Elisabeth I - Krieg dem Terror, abgerufen 3.5.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Person A: Schreibe einen Text in deutscher Sprache auf einen Zettel</td></tr>
+							<tr><td>Mindestlänge 20 Buchstaben</td></tr>
+							<tr><td>Erstelle eine Substitutionsmatrix</td></tr>
+							<tr><td>Freizeichen sollen erhalten bleiben</td></tr>
+							<tr><td>Gebe den Text Person B</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Person B: Versuche anhand der Sprachverteilung den Satz zu lösen</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<p>
+						<a href="https://de.wikipedia.org/wiki/Buchstabenh%C3%A4ufigkeit">Buchstabenhäufigkeit</a>
+				  </p>
+					<p>
+						<a href="https://de.wikipedia.org/wiki/Liste_der_h%C3%A4ufigsten_W%C3%B6rter_der_deutschen_Sprache">Worthäufigkeit</a>
+					</p>
+				</section>
+
+				<section>
+						<img height="400" data-src="imgs/IC.png" alt="Index of Coincidence">
+						<h2>Index of Coincidence</h2>
+						<h3>hoch</h3>
+				</section>
+
+				<section>
+						<img height="400" data-src="imgs/chisq.png" alt="Chi-Square">
+						<h2>Chi Square</h2>
+						<h3>niedrig</h3>
+				</section>
+
+				<section>
+					<h2>Monoalphabetisch - Kryptoanalyse</h2>
+					<p>Sprachwissenschaft</p>
+					<p>Häufigkeitsverteilung</p>
+				</section>
+
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/vigenere.png" alt="Vigenere">
+						<figcaption style="font-size:12px">https://de.wikipedia.org/wiki/Vigen%C3%A8re-Chiffre, 3.5.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<h2>Polyalphabetisch</h2>
+					<p>Mehrere Alphabete nutzen</p>
+					<p>Schlüssel</p>
+					<p>Vigenère</p>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Im Verzeichnis Exercises/2 liegt eine input Datei</td></tr>
+							<tr><td>Versucht diese mit tools/2/ca_vigenere und decryptvigenere zu knacken</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Person A: Erstelle eine Textdatei mit einem verschlüsselten Text der Vigenere-Chiffre</td></tr>
+							<tr><td><a href="http://rumkin.com/tools/cipher/vigenere.php">http://rumkin.com/tools/cipher/vigenere.php</a></td></tr>
+							<tr><td>Nur Großbuchstaben verwenden und keine Freizeichen und Satzzeichen</td></tr>
+							<tr><td>Speichere sie unter Exercises/2</td></tr>
+							<tr><td>DeineNr_vigenere.md</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Person A: Erstelle eine Textdatei mit einem verschlüsselten Text der Vigenere-Chiffre</td></tr>
+							<tr><td>Nur Großbuchstaben verwenden und keine Freizeichen und Satzzeichen</td></tr>
+							<tr><td>Deutsch</td></tr>
+							<tr><td>Speichere sie unter Exercises/2</td></tr>
+							<tr><td>DeineNr_vigenere.md</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Person B: Versuche die Datei an dich zu knacken</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Polyalphabetisch - Kryptoanalyse</h2>
+					<p>Wiederholungen Schlüssel finden</p>
+				</section>
+
+				<section>
+					<h2>Engima - Kryptoanalyse</h2>
+					<p>Mechanisierung</p>
+					<p>Polen</p>
+					<p>Turing</p>
+				</section>
+
+<section>
+	<figure>
+		<img height="600" data-src="imgs/Enigma_von_Arthur_Scherbius_in_ETZ_1923.jpg" alt="EnigmaFirst">
+		<figcaption style="font-size:12px">https://de.wikipedia.org/wiki/Enigma_(Maschine)#/media/File:Enigma_von_Arthur_Scherbius_in_ETZ_1923.jpg</figcaption>
+	</figure>
+</section>
+
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/enigma-883925_1280.jpg" alt="Enigma Frontal">
+						<figcaption style="font-size:12px">https://pixabay.com, 3.5.17</figcaption>
+					</figure>
+				</section>
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/enigma2.png" alt="Enigma 2D">
+					</figure>
+				</section>
+
+				<section>
+						<figure>
+							<img height="600" data-src="imgs/Enigma_rotor_wiring.png" alt="Enigma-Rotor">
+							<figcaption style="font-size:12px">https://en.wikipedia.org/wiki/Enigma_rotor_details#/media/File:Enigma_rotor_wiring.png</figcaption>
+						</figure>
+					</section>
+
+					<section>
+							<figure>
+								<img height="600" data-src="imgs/Enigma_rotor_exploded_view.png" alt="Enigma-Rotor">
+								<figcaption style="font-size:12px">https://en.wikipedia.org/wiki/Enigma_rotor_details#/media/File:Enigma_rotor_exploded_view.png</figcaption>
+							</figure>
+						</section>
+
+						<section>
+								<figure>
+									<img height="600" data-src="imgs/Enigma_insides.jpg" alt="EnigmaSet">
+									<figcaption style="font-size:12px">https://en.wikipedia.org/wiki/Enigma_machine#/media/File:Enigma_insides.agr.jpg</figcaption>
+								</figure>
+							</section>
+
+						<section>
+								<figure>
+									<img height="600" data-src="imgs/Enigma_rotor_set.png" alt="EnigmaSet">
+									<figcaption style="font-size:12px">https://en.wikipedia.org/wiki/Enigma_rotor_details#/media/File:Enigma_rotor_set.png</figcaption>
+								</figure>
+							</section>
+
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/Enigma_wiring_kleur.svg" alt="Verdrahtung">
+						<figcaption style="font-size:12px">https://de.wikipedia.org/wiki/Enigma_(Maschine)#/media/File:Enigma_wiring_kleur.svg</figcaption>
+					</figure>
+				</section>
+
+				<section>
+				<figure>
+				<img height="600" data-src="imgs/Enigma-plugboard.jpg" alt="Enigma-Plugboard">
+				<figcaption style="font-size:12px">https://en.wikipedia.org/wiki/Enigma_machine#/media/File:Enigma-plugboard.jpg, 23.9.17</figcaption>
+				</figure>
+				</section>
+
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/Enigma-action.svg" alt="EnigmaInAction">
+						<figcaption style="font-size:12px">https://en.wikipedia.org/wiki/Enigma_machine#/media/File:Enigma-action.svg, 23.9.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/Enigmas.jpg" alt="Enigmas">
+						<figcaption style="font-size:12px">https://en.wikipedia.org/wiki/Enigma_machine#/media/File:Enigmas.jpg, 23.9.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<p>
+						<a href="http://summersidemakerspace.ca/projects/enigma-machine/">Enigma-Simulator</a>
+					</p>
+					<p>
+						<a href="http://enigma.louisedade.co.uk/enigma.html">Enigma-Simulator</a>
+					</p>
+				</section>
+
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/MR_1932_small.jpg" alt="Rejewski">
+						<figcaption style="font-size:12px">https://de.wikipedia.org/wiki/Marian_Rejewski#/media/File:MR_1932_small.jpg, 23.9.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<h2>Marian Rejewski</h2>
+					<p>1 Jahr als Mathematik-Student in Göttingen</p>
+				</section>
+
+				<section>
+					<figure>
+						<img height="500" data-src="imgs/nachrichtenschluessel.png" alt="Nachrichtenschluessel">
+						<figcaption style="font-size:12px">http://www.karlin.mff.cuni.cz/~tuma/nciphers/oulu.pdf, 23.9.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<h2>Übung</h2>
+					<table>
+						<tbody>
+							<tr><td>Versuche alle Rotationsketten zu finden</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+				<blockquote cite="https://en.wikipedia.org/wiki/Cryptanalysis_of_the_Enigma">
+					&ldquo;This was considered by western Supreme Allied Commander Dwight D. Eisenhower to have been "decisive" to the Allied victory.&rdquo;
+				</blockquote>
+				</section>
+
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/TuringBombeBletchleyPark.jpg" alt="Enigma 2D">
+						<figcaption style="font-size:12px">https://de.wikipedia.org/wiki/Turing-Bombe#/media/File:TuringBombeBletchleyPark.jpg, 3.5.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<p>
+						<a href="https://www.google.de/maps/place/Hut+8/@51.9972312,-0.7438588,434m/data=!3m1!1e3!4m8!1m2!2m1!1sBletchley+Park+Hut+8!3m4!1s0x487655159ae9deff:0x3a3ba03187753cde!8m2!3d51.9972433!4d-0.7419404">Bletchley-Park</a>
+					</p>
+				</section>
+
+				<section>
+					<li>Never use the same key to encrypt two different messages</li>
+					<li>Never encrypt the same message twice with two different keys</li>
+					<li>Always assume that the adversary knows the encryption algorithm</li>
+					<li>Never underrate the adversary.</li>
+				</section>
+
+				<section>
+					<h2>Symmetrisch</h2>
+					<p>Mathematik!</p>
+					<p>Horst Feistel / Lucifer</p>
+					<p>Data Encryption Standard</p>
+					<p>One Time Pad</p>
+				</section>
+
+				<section>
+					<figure>
+						<img height="600" data-src="imgs/stock-photo-bread-making-dough-knead-pastry-bakery-kitchen-man-cooking-process-concept-572310409.jpg" alt="dough">
+						<figcaption style="font-size:12px">https://www.shutterstock.com, 3.5.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<figure>
+						<img height="250" data-src="imgs/xor1.png" alt="xor1">
+						<img height="250" data-src="imgs/xor2.png" alt="xor2">
+						<figcaption style="font-size:12px">https://www.crypto101.io/Crypto101.pdf, 3.5.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<figure>
+						<img width="800" data-src="imgs/otp_wrong0.png" alt="otp_wrong0.png">
+						<figcaption style="font-size:12px">https://www.crypto101.io/Crypto101.pdf, 3.5.17</figcaption>
+					</figure>
+				</section>
+				<section>
+					<figure>
+						<img width="800" data-src="imgs/otp_wrong1.png" alt="otp_wrong1.png">
+						<figcaption style="font-size:12px">https://www.crypto101.io/Crypto101.pdf, 3.5.17</figcaption>
+					</figure>
+				</section>
+				<section>
+					<figure>
+						<img width="800" data-src="imgs/otp_wrong2.png" alt="otp_wrong2.png">
+						<figcaption style="font-size:12px">https://www.crypto101.io/Crypto101.pdf, 3.5.17</figcaption>
+					</figure>
+				</section>
+				<section>
+					<figure>
+						<img width="800" data-src="imgs/otp_wrong3.png" alt="otp_wrong3.png">
+						<figcaption style="font-size:12px">https://www.crypto101.io/Crypto101.pdf, 3.5.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<h2>Symmetrisch - Kryptoanalyse</h2>
+					<p>Angriffe</p>
+					<p>Bekannter Klartext</p>
+					<p>Selbst gewählter Klartext</p>
+					<p>Differenzielle Kryptoanalyse</p>
+					<p>Lineare Kryptoanalyse</p>
+				</section>
+
+				<section data-transition="concave">
+					<h2>AES</h2>
+					<li>AES = Advanced Encryption Standard</li>
+					<li>Blockchiffre</li>
+					<li>Symmetrischer Algorithmus</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Geschichte</h2>
+					<li>Ausschreibung (1996)</li>
+					<li>US National Institute of Standards and Technology</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Geschichte</h2>
+					<li>Vorschlag belgische Kryptographen 1996:</li>
+					<li>Vincent Rijmen</li>
+					<li>Joan Daemen</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Vincent Rijmen</h2>
+					<figure>
+					<img height="500" data-src="imgs/Vincent-Rijmen.jpg" alt="VincentRijmen">
+					<figcaption style="font-size:12px">https://de.wikipedia.org/wiki/Vincent_Rijmen</figcaption>
+					<figure>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Joan Daemen</h2>
+					<figure>
+					<img height="500" data-src="imgs/daemen.jpg" alt="Daemen">
+					<figcaption style="font-size:12px">http://www-users.math.umn.edu/~math-sa-sara0050/space16/speakers.shtml<figcaption>
+				</figure>
+				</section>
+				<section data-transition="concave">
+					<h2>Geschichte</h2>
+					<li>5 Jahre Standardisierungsprozess</li>
+					<li>2002 Federal Information Processing Standard PUB 197</li>
+					<li>kurz: FIPS 197</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Shannon's Confusion und Diffusion</h2>
+					<li>Guter Krypto-Algorithmus:</li>
+					<li>Confusion</li>
+					<li>Diffusion</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Allgemein</h2>
+					<li>Substitutions-Permutations-Netz</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Substitutions-Permutations-Network</h2>
+					<figure>
+					<img height="400" data-src="imgs/SubstitutionPermutationNetwork2.png" alt="SP-Net">
+					<figcaption style="font-size:12px">https://de.wikipedia.org/wiki/Substitutions-Permutations-Netzwerk#/media/File:SubstitutionPermutationNetwork2.png</figcaption>
+				</figure>
+				</section>
+
+				<section data-transition="concave">
+					<h2>AES-Kern</h2>
+					<li>Der State</li>
+					<img height="400" data-src="imgs/state.png" alt="State">
+				</section>
+
+				<section data-transition="concave">
+					<h2>Schlüssel- und Block-größe Rijndael</h2>
+					<li>Mehrfaches von 32 Bit</li>
+					<li>>= 128 bits und <= 256 bits</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Schlüssel- und Block-größe AES</h2>
+					<li>Block: 128 bits</li>
+					<li>Schlüssel: 128,192 oder 256 bits</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Geschichte</h2>
+					<li>2003:</li>
+					<blockquote>&ldquo;
+				The design and strength of all key lengths of the AES algorithm [...] are sufficient to protect classified information up to the SECRET level. TOP SECRET information will require use of either the 192 or 256 key lengths.
+					&ldquo;</blockquote>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Teilkomponenten</h2>
+					<li>SubBytes</li>
+					<li>ShiftRows</li>
+					<li>MixColumns</li>
+					<li>AddRoundKey</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>SubBytes</h2>
+					<figure>
+					<img height="500" data-src="imgs/AES-SubBytes.svg" alt="SubBytes">
+					<figcaption style="font-size:12px">https://en.wikipedia.org/wiki/Advanced_Encryption_Standard#/media/File:AES-SubBytes.svg</figcaption>
+					</figure>
+				</section>
+
+				<section data-transition="concave">
+					<h2>ShiftRows</h2>
+					<figure>
+					<img height="500" data-src="imgs/AES-ShiftRows.svg" alt="ShiftRows">
+					<figcaption style="font-size:12px">https://de.wikipedia.org/wiki/Advanced_Encryption_Standard#/media/File:AES-ShiftRows.svg</figcaption>
+				</figure>
+				</section>
+
+				<section data-transition="concave">
+					<h2>MixColumns</h2>
+					<figure>
+					<img height="500" data-src="imgs/AES-MixColumns.svg" alt="MixColumns">
+					<figcaption style="font-size:12px">https://de.wikipedia.org/wiki/Advanced_Encryption_Standard#/media/File:AES-MixColumns.svg</figcaption>
+				</figure>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Diffusion nach Shannon in AES</h2>
+					<li>über ShiftRows und MixColumns</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>AddRoundKey</h2>
+					<figure>
+					<img height="500" data-src="imgs/AES-AddRoundKey.svg" alt="AddRoundKey">
+					<figcaption style="font-size:12px">https://de.wikipedia.org/wiki/Advanced_Encryption_Standard#/media/File:AES-AddRoundKey.svg</figcaption>
+				</figure>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Durchlauf</h2>
+					<li>KeyExpansions</li>
+					<li>InitialRound</li>
+					<li>Rounds</li>
+					<li>Final Round</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>KeyExpansions</h2>
+					<li>Rundenschlüssel mittels Rijndael's Key Schedule</li>
+					<li>128-bit Round-Key für jede Runde</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>InitialRound</h2>
+					<li>Nur AddRoundKey = byteweises XOR State mit Rundenschlüssel</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Rounds</h2>
+					<li>SubBytes = Substitution</li>
+					<li>ShiftRows = Transposition</li>
+					<li>MixColumns = Mixoperation</li>
+					<li>AddRoundKey = Schlüssel-XOR</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Rounds</h2>
+					<li>10 Wiederholungen für 128-bit keys.</li>
+					<li>12 Wiederholungen für 192-bit keys.</li>
+					<li>14 Wiederholungen für 256-bit keys.</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Final Round</h2>
+					<li>SubBytes = Substitution</li>
+					<li>ShiftRows = Transposition</li>
+					<li>AddRoundKey = Schlüssel-XOR</li>
+					<li>kein MixColumns</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Bekannte Angriffe</h2>
+					<li>Nachfolgend alles was besser als reines Brute-Force</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Bekannte Angriffe</h2>
+					<li>Nachfolgend alles was besser als reines Brute-Force</li>
+					<li>Theoretischer Natur</li>
+					<li>Side-Channel</li>
+					<li>Weniger Runden mit kleinerem Schlüssel</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Angriffe theoretischer Natur</h2>
+					<li>Related-Key Attack</li>
+					<li>Known-Key Distinguished Attack</li>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Side-Channel</h2>
+					<li>Mehrere Cache- und Cache-Timing Angriffe</li>
+					<li>Optisch</li>
+					<li>Differential Fault-Analysis auf Hardware</li>
+				</section>
+
+				<section>
+					<h2>Asymmetrisch I</h2>
+					<p>Schlüsselverteilungsproblem</p>
+				</section>
+
+				<section>
+									<figure>
+										<img height="600" data-src="imgs/diffiehelman1.png" alt="DH1">
+									</figure>
+				</section>
+
+				<section>
+									<figure>
+										<img height="600" data-src="imgs/diffiehellman2.png" alt="DH1">
+									</figure>
+				</section>
+
+				<section>
+									<figure>
+										<img height="600" data-src="imgs/diffiehellman3.png" alt="DH1">
+									</figure>
+				</section>
+
+				<section>
+									<figure>
+										<img height="600" data-src="imgs/diffiehellman4.png" alt="DH1">
+									</figure>
+				</section>
+
+				<section>
+					<h2>Asymmetrisch II</h2>
+					<p>Diffie Hellman Merkle / El Gamal</p>
+					<p>Basis: Diskrete Logarithmen</p>
+				</section>
+
+				<section>
+					<figure>
+  					<img height="500" data-src="imgs/clock-face.png" alt="Modulo-Arithmetik">
+  					<figcaption style="font-size:12px">https://www.gpg4win.de/doc/de/gpg4win-compendium_31.html,3.5.17</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<div>
+							\[3^x=81\]
+						</div>
+						<br>
+						<p>Prüfung einfach:</p>
+						<div>
+								\[3^5=243 \text{ zu groß}\]
+						</div>
+						<div>
+								\[3^3=27 \text{ zu klein}\]
+						</div>
+				</section>
+
+				<section>
+					<div>
+							\[3^x=1 \bmod 7\]
+						</div>
+						<br>
+						<p>Annäherung schwierig</p>
+						<p>im Worst Case: Durchprobieren</p>
+						<table>
+							<tbody>
+								<tr><td>x</td>  							<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+								<tr><td>\[3^x \]</td>					<td>3</td><td>9</td><td>27</td><td>81</td><td>243</td><td>729</td></tr>
+								<tr><td>\[3^x(\bmod 7)\]</td>	<td>3</td><td>2</td><td>6</td><td>4</td><td>5</td><td>1</td></tr>
+							</tbody>
+						</table>
+				</section>
+
+				<section>
+						<h4>Prinzip Asymmetrische Verschlüsselung</h4>
+						<p>Einwegfunktion</p>
+						<p>Jeder kann Schloss zu machen.</p>
+						<p>Nur ich kann es auf machen.</p>
+						<figure>
+							<img height="238" data-src="imgs/close-159133_1280.png" alt="padlock">
+							<figcaption style="font-size:12px">https://pixabay.com,3.5.17</figcaption>
+						</figure>
+			 </section>
+
+				<section>
+					<h2>Asymmetrisch III</h2>
+					<p>Rivest Shamir Adleman</p>
+					<p>Primfaktorzerlegung</p>
+				</section>
+
+				<section>
+					<div>
+							\[17159 * 10247 = 175828273\]
+						</div>
+						<br>
+						<p>Prüfung einfach:</p>
+						<div>
+								\[175828273 / 10247 = 17159 \text{ R } 0\]
+						</div>
+				</section>
+
+				<section>
+					<div>
+							\[408508091\]
+						</div>
+						<br>
+						<p>Annäherung schwierig</p>
+						<p>Im Worst Case durchprobieren</p>
+						<a href="https://primes.utm.edu/">https://primes.utm.edu/</a>
+						<div>
+								1. \[408508091 / 3 = 136169363 \text{ R } 2\]
+								...
+								2000. \[408508091 / 18313 = 22307 \text{ R } 0\]
+						</div>
+				</section>
+
+				<section>
+					<h2>Asymmetrisch - Kryptoanalyse</h2>
+					<p>Aktuell: Schutz durch "harte" Mathematikprobleme</p>
+					<p>Moores Law</p>
+					<p>Quantencomputer<p>
+					<a href="https://en.wikipedia.org/wiki/Timeline_of_quantum_computing">Zeitlinie Quantencomputer</a>
+					<a href="https://www.youtube.com/watch?v=EZ4L5z7tTCQ">https://www.youtube.com/watch?v=EZ4L5z7tTCQ</a>
+				</section>
+
+				<section>
+						<h3 style="color:#DDDDBB">Superposition</h3>
+						<figure>
+							<img height="400" data-src="imgs/Standing_waves1.gif" alt="Superposition">
+							<figcaption style="font-size:12px">https://de.wikipedia.org/wiki/Superposition_(Physik)#/media/File:Standing_waves1.gif, 23.9.17</figcaption>
+						</figure>
+				</section>
+
+				<section>
+						<h3 style="color:#DDDDBB">Verschränkung</h3>
+						<figure>
+							<img height="400" data-src="imgs/Quantum-Entanglement.png" alt="Verschraenkung">
+							<figcaption style="font-size:12px">https://blogs.umass.edu/Techbytes/2016/10/18/quantum-computing/, 23.9.17</figcaption>
+						</figure>
+				</section>
+
+				<section>
+					<h2>Zusammenfassung</h2>
+					<table>
+						<tbody>
+							<tr><td>Einführung</td></tr>
+							<tr><td>Monoalphabetisch</td></tr>
+							<tr><td>Polyalphabetisch</td></tr>
+							<tr><td>Mechanisierung - Enigma</td></tr>
+							<tr><td>Symmetrisch</td></tr>
+							<tr><td>Asymmetrisch</td></tr>
+							<tr><td>Quantencomputer</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h4 style="font-size:40px">Weiterführende empfehlenswerte Literatur I</h4>
+					<ul>
+						<li style="font-size:40px">Allgemein
+								<ul style="font-size:20px">Geheime Botschaften - Simon Singh</ul>
+							  <ul style="font-size:20px">The Codebreakers - David Kuhn</ul>
+						</li>
+						<li style="font-size:40px">Für Programmierer
+								<ul style="font-size:20px">Free: Crypto101 - <a href="https://www.crypto101.io/Crypto101.pdf">https://www.crypto101.io/Crypto101.pdf</a></ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4 style="font-size:40px">Weiterführende empfehlenswerte Literatur II</h4>
+					<ul>
+						<li style="font-size:40px">ROT und Vigenère
+							  <ul style="font-size:20px"><a href="http://www.wikihow.com/Decipher-a-Secret-Code">WikiHow - Decipher a Secret Code</a></ul>
+								<ul style="font-size:20px">Übung über Kevin Mitnick - Ghost in the Wires - Kapiteleinführungen</ul>
+								<ul style="font-size:20px"><a href="http://www.wikihow.com/Encode-and-Decode-Using-the-Vig%C3%A8nere-Cipher">WikiHow Encode-Decode Vigenère</a></ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4 style="font-size:40px">Weiterführende empfehlenswerte Literatur III</h4>
+					<ul>
+						<li style="font-size:40px">Enigma
+								<ul style="font-size:20px"><a href="http://chc60.fgcu.edu/Images/articles/Rejewski.pdf">Rejewski-How Polish Mathematicians Deciphered the Enigma</a></ul>
+							  <ul style="font-size:20px"><a href="http://www.karlin.mff.cuni.cz/~tuma/nciphers/oulu.pdf">Permutation Groups and the Solution of German Enigma Cipher</a></ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4 style="font-size:40px">Weiterführende empfehlenswerte Literatur IV</h4>
+					<ul>
+						<li style="font-size:40px">Quantencomputer
+								<ul style="font-size:20px"><a href="https://www.youtube.com/watch?v=EZ4L5z7tTCQ
+https://www.heise.de/thema/Quantencomputer">https://www.youtube.com/watch?v=EZ4L5z7tTCQ
+https://www.heise.de/thema/Quantencomputer</a></ul>
+								<ul style="font-size:20px"><a href="https://www.youtube.com/watch?v=EzeorEAixJ8">https://www.youtube.com/watch?v=EzeorEAixJ8</a></ul>
+								<ul style="font-size:20px"><a href="https://www.youtube.com/watch?v=JhHMJCUmq28">https://www.youtube.com/watch?v=JhHMJCUmq28</a></ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Schönes Wochenende</h3>
+									<figure>
+										<img height="400" data-src="imgs/frohesWochenende.gif" alt="FrohesWochenende">
+										<figcaption style="font-size:12px">https://giphy.com/gifs/snl-computer-power-87NS05bya11mg</figcaption>
+									</figure>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/math/math.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

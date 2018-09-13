@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Titel der Webseite</title>
+    <!-- weitere Kopfinformationen -->
+    <!-- Kommentare werden im Browser nicht angezeigt. -->
+    <style>
+	.moobefore::after { 
+	   content: '&quot;&#x27;'
+	}
+    </style>
+  </head>
+  <body onload="//alert('&quot;&#x27;')">  <!-- escapting greift nicht hiert -->
+    <script>//alert("&quot;&quot;");</script>
+    <div style="">Inhalt der Webseite</div>
+    <div class="moobefore" style="content:'&quot;&#x27;'" />  <!-- escapting greift nicht hiert -->
+  </body>
+</html>
+

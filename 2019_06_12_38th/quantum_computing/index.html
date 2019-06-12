@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Einführung in das Quantencomputing</title>
+
+		<meta name="description" content="Einführung in das Quantencomputing + IT-Security">
+		<meta name="author" content="Matthias Altmann">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-transition="fade" data-background-image="img/ibm_quantumcomputer.jpg">
+					<img style="border:0;" width="70%" src="img/test.png"/>
+				</section>
+
+				<section data-transition="fade">
+					<p>Worum es heute geht</p>
+					<img  style="border:0;" width="60%" src="img/pure-mathematics.jpg"/>
+				</section>
+
+				<section data-transition="none">
+					<p>Worum es heute geht</p>
+					<img  style="border:0;" width="60%" src="img/pure-mathematics_pixelate.png"/>
+				</section>
+
+				<section data-transition="fade">
+					  <h3>About us</h3>
+						<h4>Oliver Koch</h4>
+						<ul>
+							<li>Softwareentwickler bei Micromata</li>
+							<li>Parallel Studium Nanoscience in Kassel</li>
+							<li>Laufen, Gitarre spielen, Naturwissenschaften</li>
+					  </ul>
+				</section>
+
+				<section data-transition="fade">
+					  <h3>About us</h3>
+						<h4>Matthias Altmann</h4>
+						<ul>
+							<li>Interessen: Security + Softwareentwicklung</li>
+						  <li>kein ausgebildeter Physiker</li>
+					  </ul>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Aufbau</h3>
+					<ul>
+						<li>Einführung - Matthias</li>
+						<li>Quantenmechanische Grundlagen - Oliver</li>
+						<li>Quantencomputer - Matthias</li>
+				  </ul>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Vorteil Quantencomputer</h3>
+					<p>Parallelisierbarkeit</p>
+					<img width="60%" src="img/letters-416960_1280.jpg"/>
+					<div style="font-size:8px">Entnommen https://pixabay.com, Di 11.Juni 2019</div>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Massive Geldmittel</h3>
+					<ul>
+						<li><a href="https://en.wikipedia.org/wiki/National_Quantum_Initiative_Act">National Quantum Initiative Act</a> / Unternehmen / NASA - USA</li>
+						<li><a href="https://www.wired.co.uk/article/quantum-computing-china-us">China</a></li>
+						<li><a href="https://www.heise.de/newsticker/meldung/Bund-165-Millionen-Euro-fuer-abhoersichere-Quantenkommunikation-4425179.html">Europa</a></li>
+					</ul>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Entwicklung Markt</h3>
+					<p><a href="https://www.gartner.com/smarterwithgartner/gartner-top-10-strategic-technology-trends-for-2019/">Gartner Top 10 - Strategic Technology Trends 2019</a></p>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Entwicklung Markt - Beispiel</h3>
+					<p>QCaaS</p>
+				</section>
+
+				<section data-transition="fade">
+					<h2>Algorithmen</h2>
+					<ul>
+						<li>Simulationen</li>
+						<li>Suche</li>
+						<li class="fragment highlight-current-blue">Krypto</li>
+						<li>Klassifikation</li>
+					</ul>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Einordnung</h3>
+					<p>Größenentwicklung</p>
+					<img width="40%" src="img/magnify.jpg"/>
+					<div style="font-size:8px">Entnommen https://upload.wikimedia.org, Di 11.Juni 2019</div>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Einordnung</h3>
+					<p>Klassisch - Transistoren</p>
+					<img width="30%" src="img/transistor.jpeg"/>
+					<div style="font-size:8px">Entnommen https://upload.wikimedia.org, Di 11.Juni 2019</div>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Einordnung</h3>
+					<img style="border:0;" width="80%" src="img/physics_classification.png"/>
+					<div style="font-size:8px">Entnommen https://upload.wikimedia.org, Di 11.Juni 2019</div>
+				</section>
+
+				<!-- Quantenmechanik -->
+
+				<section data-transition="fade">
+					<h3>Klassische Physik</h3>
+					<p>Ursache -> Wirkung</p>
+					<div>
+					<img style="float:left;position:absolute;top:30%;left:0%" width="55%" src="img/left_classical_physics.jpg"/>
+					<img style="float:right" width="40%" src="img/right_classical_physics.jpg"/>
+					</div>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Aufbau Doppelspalt-Experiment</h3>
+					<img style="border:0;" width="55%" src="img/doppelspalt_experiment.png"/>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Ohne Trennwand</h3>
+					<img style="border:0;" width="100%" src="img/wo_trennwand.png"/>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Ein offener Spalt</h3>
+					<img style="border:0;" width="100%" src="img/offener_spalt.png"/>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Zwei offene Spalte</h3>
+					<img style="border:0;" width="100%" src="img/zwei_offene_Spalte.png"/>
+				</section>
+				<section data-transition="fade">
+					<h3>Zwei offene Spalte</h3>
+					<img style="border:0;" width="100%" src="img/zwei_offene_Spalte_2.png"/>
+				</section>
+
+				<!-- <section data-transition="fade">
+					<h3>Zwei offene Spalte</h3>
+					<img style="border:0;" width="100%" src="img/zwei_offene_Spalte_2.png"/>
+				</section> -->
+
+				<section data-transition="fade" data-background-image="img/wave1.png">
+				</section>
+
+				<section data-transition="fade" data-background-image="img/wasserdoppelspalt.jpeg">
+				</section>
+
+				<section data-transition="fade" data-background-image="img/ws_verteilung.png">
+				</section>
+
+				<section data-transition="fade" data-background-image="img/wave2.png">
+				</section>
+
+				<section data-transition="fade">
+					<h3>WTF???</h3>
+					<p>Messung beeinflusst Ergebnis</p>
+					<p>Wahrscheinlichkeit/ Zufall</p>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics</h2>
+					<table style="width:100%">
+					  <tr>
+					    <th>Klassisch</th>
+					    <th>QC</th>
+					  </tr>
+					  <tr>
+					    <td>Ergebnis eindeutig</td>
+							<td>Ergebnis mit Wahrscheinlichkeit / Zufall</td>
+					  </tr>
+					  <tr>
+							<td>Messung einmal</td>
+					    <td>Messung mehrmals</td>
+					  </tr>
+					</table>
+
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics - Typen</h2>
+					<ul>
+						<li>General Purpose</li>
+						<li>Specific Purpose</li>
+					</ul>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics</h2>
+					<ul>
+						<li>Qubit</li>
+					</ul>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics - Blochsphere</h2>
+					<img width="40%" data-src="img/blochsphere.png" alt="Blochsphere">
+					<div style="font-size:8px">Entnommen https://upload.wikimedia.org, Di 11.Juni 2019</div>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics - Superposition</h2>
+					<p>Zwischen 0 und 1</p>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics - Entanglement</h2>
+					<img style="border:0;" width="60%" data-src="img/entanglement.png" alt="Entanglement">
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics</h2>
+					<iframe class="stretch" data-src="https://de.wikipedia.org/wiki/Liste_der_Quantengatter"></iframe>
+					<a href="https://de.wikipedia.org/wiki/Liste_der_Quantengatter" data-preview-link>Quantum Gates</a>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics</h2>
+					<iframe class="stretch" data-src="https://en.wikipedia.org/wiki/Quantum_algorithm"></iframe>
+					<a href="https://en.wikipedia.org/wiki/Quantum_algorithm" data-preview-link>Algorithms</a>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics - Construction</h2>
+					<ul>
+						<li>Superconducting (IBM Q, Google Bristlecone)</li>
+						<li>Ion Trap</li>
+						<li>Topologic</li>
+						<li>Nuclear Magnetic Resonance</li>
+						<li>...</li>
+					</ul>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics - Ion Trapping QC</h2>
+					<img width="60%" data-src="img/iontrapping.jpg" alt="Ion Trapping">
+					<div style="font-size:8px">Entnommen https://commons.wikimedia.org, Mi 12.Juni 2019</div>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics - Supraleitender QC - IBM Q</h2>
+					<img width="60%" data-src="img/ibm_q.jpg" alt="IBM Q">
+					<div style="font-size:8px">Entnommen https://www.flickr.com/photos/epredator/40239193864, Mi 13.Juni 2019</div>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics</h2>
+					<iframe class="stretch" data-src="https://en.wikipedia.org/wiki/List_of_companies_involved_in_quantum_computing_or_communication"></iframe>
+					<a href="https://en.wikipedia.org/wiki/List_of_companies_involved_in_quantum_computing_or_communication" data-preview-link>Companys</a>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Basics</h2>
+					<iframe class="stretch" data-src="https://de.wikipedia.org/wiki/Quantengatter#Realisierung"></iframe>
+					<a href="https://de.wikipedia.org/wiki/Quantengatter#Realisierung" data-preview-link>Construction</a>
+				</section>
+
+				<section data-transition="convex">
+					<h2>Algorithmen - Krypto</h2>
+					<ul>
+						<li>Shor's Algorithmus: Revolution!</li>
+						<li>Gängige asymmetrischen Methoden gebrochen (RSA, EC, Diskrete Logarithmen)</li>
+					</ul>
+					<div style="font-size:8px">vgl. Peter W. Shor, Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer, 1995</div>
+				</section>
+
+				<section data-transition="none">
+					<h2>Algorithmen - Krypto</h2>
+					<ul>
+						<li>Shor's Algorithmus: Revolution!</li>
+						<li>Gängige asymmetrischen Methoden gebrochen (RSA, EC, Diskrete Logarithmen)</li>
+					</ul>
+					<div style="font-size:8px">vgl. Peter W. Shor, Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer, 1995</div>
+					<img style="border: 0;position:absolute;top:20%;left:35%" width="25%" data-src="img/fearful.png" alt="Fearful face">
+				</section>
+
+				<section data-transition="convex">
+					<h2>Krypto</h2>
+					<ul>
+						<li>Minimum: Doppelt so viele Qubits + 3</li>
+					</ul>
+					<div style="font-size:8px">vgl. Stéphane Beauregar, Circuit for Shor’s algorithm using 2n+3 qubits, 2002</div>
+				</section data-transition="zoom">
+
+				<section data-transition="convex">
+					<h2>Algorithmen - Gegenmaßnahmen</h2>
+					<ul>
+						<li>OpenSSH 8.0 - PQC-Chiffren</li>
+						<li>Quantenkryptographie</li>
+					</ul>
+					<div style="font-size:8px">vgl. <a href="https://www.linux-magazin.de/news/openssh-8-0-mit-quanten-resistenten-keys/">OpenSSH 8.0 mit Quanten-resistenten Keys, LinuxMagazin<a></div>
+					<div style="font-size:8px">vgl. <a href="https://openquantumsafe.org/">Open Quantum Safe - SSH, SSL</a></div>
+				</section data-transition="zoom">
+
+				<section data-transition="convex">
+					<h2>Zukunft</h2>
+					<a href="http://listverse.com/2019/01/10/top-10-unexpected-future-applications-of-quantum-computers/">Top 10 Unexpected Future Applications</a>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Updates</h2>
+					<iframe class="stretch" data-src="https://en.wikipedia.org/wiki/Timeline_of_quantum_computing"></iframe>
+					<a href="https://en.wikipedia.org/wiki/Timeline_of_quantum_computing" data-preview-link>Construction</a>
+				</section>
+
+				<section data-transition="concave">
+					<h2>Updates</h2>
+					<a href="https://www.heise.de/thema/Quantencomputer">Heise Online - Quantencomputer</a>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Material</h2>
+					<iframe class="stretch" data-src="https://www.micromata.de/blog/it-security/quantencomputer-it-sicherheit/"></iframe>
+					<a href="https://www.micromata.de/blog/it-security/quantencomputer-it-sicherheit/"></a>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Material</h2>
+					<a href="https://github.com/desireevl/awesome-quantum-computing">
+					<img width="60%" data-src="img/awesomelist.png" alt="Awesome List"/>
+					</a>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Material - Quantenmechanik</h2>
+					<ul>
+						<li>Leifiphysik.de</li>
+					  <li>https://www.ravensburger.de/family-friends/bildung/schwerkraft-erleben/index.html</li>
+						<li>https://de.toonpool.com/cartoons/Gravitationswellen_264641</li>
+						<li>Wikipedia.de</li>
+					</ul>
+				</section>
+
+
+				<section data-transition="zoom">
+					<h1>DEMO TIME :-)</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+
+				// Parallax background image
+				parallaxBackgroundImage: 'img/fractal-1812490_gray_dark.png', // e.g. "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
+
+				// Parallax background size
+				parallaxBackgroundSize: '1920x 1402px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+
+				// Number of pixels to move the parallax background per slide
+				// - Calculated automatically unless specified
+				// - Set to 0 to disable movement along an axis
+				parallaxBackgroundHorizontal: 10,
+				parallaxBackgroundVertical: 8,
+
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Billy Duong">
+  <title>ADFGVX</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://revealjs.com/css/reset.css">
+  <link rel="stylesheet" href="http://revealjs.com/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="http://revealjs.com/css/theme/white.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://revealjs.com/css/print/pdf.css' : 'http://revealjs.com/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://revealjs.com/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">ADFGVX</h1>
+  <p class="author">Billy Duong</p>
+</section>
+
+<section id="inhalt" class="slide level2">
+<h2>Inhalt</h2>
+<p>Allgemein</p>
+<p>Verfahren</p>
+<p>Kryptoanalyse</p>
+</section>
+<section><section id="allgemein" class="title-slide slide level1"><h1>Allgemein</h1></section><section id="geschichtlicher-hintergrund" class="slide level2">
+<h2>Geschichtlicher Hintergrund</h2>
+<ul>
+<li><p><a href="https://de.wikipedia.org/wiki/ADFGX">“Geheimschrift der Funker 1918”</a></p></li>
+<li><p>manuelles Verschlüsselungsverfahren</p></li>
+<li><p>verwendet im 1. WK (Deutschland)</p></li>
+<li><p>entwickelt von <a href="https://de.wikipedia.org/wiki/Fritz_Nebel">Fritz Nebel</a> (1891-1977)</p></li>
+<li><p>März 1918 <em>ADFGX</em>, Juni <em>ADFGVX</em></p></li>
+<li><p>erstm. gebrochen von <a href="https://en.wikipedia.org/wiki/Georges_Painvin">Georges Painvin</a> (1886-1980)</p></li>
+</ul>
+</section><section id="charakteristika" class="slide level2">
+<h2>Charakteristika</h2>
+<ul>
+<li><p>Wahl “A, D, G, F, (V,) X”<a href="https://de.wikipedia.org/wiki/Morsezeichen">*</a> um Signalstörungen zu vermeiden</p>
+<pre><code>A | · −
+D | − · ·
+G | − − ·
+F | · · − ·
+V | · · · −
+X | − · · −</code></pre></li>
+<li><p>Verwendet Substitution und Transposition</p></li>
+<li><p>fraktionierendes Verfahren</p></li>
+</ul>
+</section></section>
+<section><section id="verfahren" class="title-slide slide level1"><h1>Verfahren</h1></section><section id="krytoverfahren-101" class="slide level2">
+<h2>Krytoverfahren 101</h2>
+<pre><code>Alice        | UNSAFE COMMUNICATION TUNNEL |         Bob
+
+m --E(k,m)--&gt;           c                   --D(k,c)--&gt; m
+
+             | Eve                         |
+
+
+---------------------------------------------------------
+m : message
+c : ciphertext
+k : key
+E : encryption function
+D : decryption function</code></pre>
+</section><section id="nachricht---m" class="slide level2">
+<h2>Nachricht - m</h2>
+<ul>
+<li><p>keine Leerzeichen, Buchstaben großgeschrieben</p></li>
+<li><p>Satzzeichen werden ersetzt (zB. X) oder ausgelassen</p></li>
+<li><p>Bei <em>ADFGX</em> muss ein Buchstabe gleich sein (zb. I = J)</p></li>
+<li><p>Bei <em>ADFGX</em> müssen Zahlen ausgeschrieben werden</p></li>
+<li><p>Beispiel:</p>
+<pre><code>GEHEIMENACHRICHT</code></pre></li>
+</ul>
+</section><section id="verschlüsselte-nachricht---c" class="slide level2">
+<h2>Verschlüsselte Nachricht - c</h2>
+<ul>
+<li><p>Besteht nur aus A, D, F, G, (V, ) X</p></li>
+<li><p>Wird in 5er Blöcken übertragen</p></li>
+<li><p>Beispiel:</p>
+<pre><code>DFFAD GAADX DFFVV DVFDD DGGAD FDVDD AA</code></pre></li>
+</ul>
+</section><section id="schlüssel---k" class="slide level2">
+<h2>Schlüssel - k</h2>
+<ul>
+<li><p>2 Wörter oder Zeichenketten (A-Z)</p></li>
+<li><p>1. Wort: 1-25 (ADFGX) bzw. 1-36 (ADFGVX)</p></li>
+<li><p>2. Wort: beliebig lang</p></li>
+<li><p>Beispiel:</p>
+<pre><code>KRYPTOGRAPHIE, FLUSS</code></pre></li>
+</ul>
+<p><br/> <small>Anmerkung: Schlüssel wurde in Praxis einmal täglich gewechselt.</small></p>
+</section><section id="verschlüsselung---e-i" class="slide level2">
+<h2>Verschlüsselung - E (I)</h2>
+<p><strong>1. Substitution über Polybios Quadrat</strong></p>
+<pre><code> |A D F G V X        - 1. Wort als Schlüssel:
+-·-----------          &quot;KRYPTOGRAPHIE&quot;
+A|K R Y P T O
+D|G A H I E B        - Dopplungen im Schlüssel werden
+F|C D F J L M          ausgelassen: &quot;KRYPTOGAHIE&quot;
+G|N Q S U V W
+V|X Z 0 1 2 3        - Ersetzungstabelle bilden
+X|4 5 6 7 8 9
+
+
+m = G  E  H  E  I  M  E  N  A  C  H  R  I  C  H  T
+
+ =&gt; DA DV DF DV DG FX DV GA DD FA DF AD DG FA DF AV</code></pre>
+</section><section id="verschlüsselung---e-ii" class="slide level2">
+<h2>Verschlüsselung - E (II)</h2>
+<p><strong>2. Spaltentransposition</strong></p>
+<pre><code>m&#39; = DA DV DF DV DG FX DV GA DD FA DF AD DG FA DF AV
+
+12534               12345   - in Spalten aufschreiben
+-----               -----     (#Spalten = Länge 2. Wort)
+DADVD           |   DAVDD
+FDVDG           v   FDDGV   - Spalten nach 2. Wort
+FXDVG     =&gt;        FXVGD     anordnen FLUSS = 12534
+ADDFA               ADFAD
+DFADD               DFDDA   - Spalten von OBEN nach UNTEN
+GFADF               GFDFA     ablesen (* ignorieren)
+AV***               AV***
+
+c = DFFADGAADXDFFVVDVFDDDGGADFDVDDAA
+ =&gt; DFFAD GAADX DFFVV DVFDD DGGAD FDVDD AA</code></pre>
+<p><br/> <small>Alternativ: Statt * mit zB. X (VA) auffüllen.</small></p>
+</section><section id="entschlüsselung---d" class="slide level2">
+<h2>Entschlüsselung - D</h2>
+<p><strong>1. Spaltentransposition</strong></p>
+<pre><code>12345               12534   - Spalten aufstellen (#Spalten 
+-----               -----     = Länge 2. Wort)
+DAVDD               DADVD
+FDDGV               FDVDG   - * anhand von Länge setzen
+FXVGD     =&gt;        FXDVG
+ADFAD               ADDFA   - Nachricht eintragen und Spalten
+DFDDA               DFADD     nach 2. Wort anordnen
+GFDFA               GFADF     
+AV***               AV***   - Zeilen ablesen
+
+ =&gt; DADVDFDVDGFXDVGADDFADFADDGFADFAV</code></pre>
+<p><strong>2. Substitution</strong></p>
+<pre><code> =&gt; GEHEIMENACHRICHT</code></pre>
+</section></section>
+<section><section id="kryptoanalyse" class="title-slide slide level1"><h1>Kryptoanalyse</h1></section><section id="werkzeuge-i" class="slide level2">
+<h2>Werkzeuge (I)</h2>
+<p><strong>Transposition</strong></p>
+<ul>
+<li>zB. allgemeine Spaltentransposition</li>
+<li>Known Plaintext</li>
+<li>Bigramme + Trigramme</li>
+<li>Heuristische Verfahren</li>
+</ul>
+</section><section id="werzeuge-ii" class="slide level2">
+<h2>Werzeuge (II)</h2>
+<p><strong>Monoalphabetische Substitution</strong></p>
+<ul>
+<li>zB. Cäsar-Chiffre</li>
+<li>Häufigkeitsanalyse</li>
+</ul>
+<p><br/></p>
+<p><strong>Koinzidenzindex <a href="https://de.wikipedia.org/wiki/Koinzidenzindex">*</a></strong></p>
+<p><span class="math inline">\(\displaystyle \mathbf {IC} ={\frac {\sum _{i=A}^{Z}n_{i}(n_{i}-1)}{N(N-1)}}\)</span></p>
+</section><section id="probleme" class="slide level2">
+<h2>Probleme</h2>
+<ul>
+<li><p>Häufigkeitsanalyse nicht direkt möglich</p>
+<ul>
+<li>Transposition “zerreißt” die Doppelzeichen</li>
+</ul></li>
+<li><p>Heuristische Verfahren benötigen…</p>
+<ul>
+<li>Nachbarschaftsfunktion</li>
+<li>Kostenfunktion</li>
+</ul></li>
+<li><p>(Transpositions) Schlüssellänge ist sehr wichtig!</p></li>
+</ul>
+</section><section id="ansätze-i" class="slide level2">
+<h2>Ansätze (I)</h2>
+<p><strong>SOLUTION OF THE ADFGVX SYSTEM <a href="https://www.nsa.gov/Portals/70/documents/news-features/declassified-documents/military-cryptanalysis/mil_crypt_IV.pdf">*</a></strong></p>
+<ul>
+<li><p>“Special solution by means of identical endings” (98)</p></li>
+<li><p>“Special solution by means of identical beginnings” (105)</p></li>
+<li><p>“Special solution by the exact factor method” (123)</p></li>
+<li><p>“Basic principles of the general solution” (125)</p></li>
+</ul>
+</section><section id="ansätze-ii" class="slide level2">
+<h2>Ansätze (II)</h2>
+<p><strong>Heuristischer Ansatz <a href="https://www.tandfonline.com/doi/abs/10.1080/01611194.2016.1169461?journalCode=ucry20">*</a></strong></p>
+<ul>
+<li>Transponieren und über <strong>Koinzidenzindex</strong> testen
+<ul>
+<li><span class="math inline">\(n_i\)</span> steht für Buchstabenpaare</li>
+<li>Korrekte Transposition ergibt guten Koinzidenzindex für Sprache</li>
+</ul></li>
+<li>Algorithmen: <strong>Hill Climbing</strong>, Simulated Annealing, Tabu Search, Genetische Algorithmen</li>
+</ul>
+</section></section>
+<section><section id="weiterführendes" class="title-slide slide level1"><h1>Weiterführendes</h1></section><section id="allgemein-1" class="slide level2">
+<h2>Allgemein</h2>
+<ul>
+<li><p><a href="https://de.wikipedia.org/wiki/ADFGX">Wikipedia (DE) - ADFGX</a></p></li>
+<li><p><a href="https://de.wikipedia.org/wiki/Koinzidenzindex">Wikipedia (DE) - Koinzidenzindex</a></p></li>
+<li><p><a href="https://de.wikipedia.org/wiki/Morsezeichen">Wikipedia (DE) - Morsecode</a></p></li>
+<li><p><a href="https://youtu.be/pePrEMtLMk8?t=2954">Vorlesung - Grundlagen der angewandten Kryptologie (#06)</a> *</p></li>
+<li><p><a href="https://www.dcode.fr/adfgvx-cipher">dCode - ADFGVX CIPHER</a></p></li>
+</ul>
+<p><small>* Empfehlungen</small></p>
+</section><section id="vertiefung" class="slide level2">
+<h2>Vertiefung</h2>
+<ul>
+<li><p><a href="https://www.nsa.gov/Portals/70/documents/news-features/declassified-documents/friedman-documents/publications/FOLDER_269/41784769082379.pdf">NSA - General solution for the ADFGVX cipher system</a></p></li>
+<li><p><a href="https://www.nsa.gov/news-features/declassified-documents/military-cryptanalysis/">NSA - Military Cryptanalysis</a> *</p></li>
+<li><p><a href="https://www.nsa.gov/Portals/70/documents/news-features/declassified-documents/military-cryptanalysis/mil_crypt_IV.pdf">NSA - Military Cryptanalysis IV - SOLUTION OF THE ADFGVX SYSTEM</a></p></li>
+<li><p><a href="https://www.tandfonline.com/doi/abs/10.1080/01611194.2016.1169461?journalCode=ucry20">Deciphering ADFGVX messages from the Eastern Front of World War I</a> *</p></li>
+</ul>
+<p><small>* Empfehlungen</small></p>
+</section><section id="danke-für-zuhören" class="slide level2">
+<h2>Danke für Zuhören!</h2>
+</section></section>
+    </div>
+  </div>
+
+  <script src="http://revealjs.com/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://revealjs.com/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://revealjs.com/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://revealjs.com/plugin/math/math.js', async: true },
+          { src: 'http://revealjs.com/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

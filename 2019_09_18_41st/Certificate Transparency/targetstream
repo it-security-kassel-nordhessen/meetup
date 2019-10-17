@@ -1,0 +1,26 @@
+#!/usr/bin/env -S perl -wn
+# vim: set ft=perl
+
+#
+# Filter the certificate transparency stream for valid targets.
+#
+# This script will watch the certificate transparency stream for a list of
+# domain suffixes (passed on stdin or as a file name on the command line) and
+# output any newly certified domain that ends in one of the suffixes.
+#
+# Example:
+# $ cat targets.txt
+# .zendesk.com
+# .nflxvideo.net
+# .mydomain.foo
+# .anotherdomain.bar
+# $ targetstream targets.txt > results.txt
+#
+
+foreach my $i (@domain) { print "$1\n" if /(\S*\Q$i\E)\s*$/ }
+
+} INIT {
+
+chomp(@domain = <>);
+open STDIN, "certstream --disable-colors |" or die "Can't run certstream!"
+

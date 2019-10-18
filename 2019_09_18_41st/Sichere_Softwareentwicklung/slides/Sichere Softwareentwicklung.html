@@ -1,0 +1,468 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Sichere Softwareentwicklung</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/cic.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Sichere Softwareentwicklung</h1>
+				</section>
+				<section>
+					<h2>~# whoami</h2>
+					<p class="fragment fade-in">Daniel Keyhani (tty)</p>
+					<p class="fragment fade-in">Infosec Consultant @ Crucible IT Consulting</p>
+					<p class="fragment fade-in">Consulting, Pentests and Training</p>
+					<p class="fragment fade-in">OSCP etc.</p>
+				</section>
+				<section>
+					<h2>~# cat .plan</h2>
+					<ol>
+						<li class="fragment fade-in">Einführung</li>
+						<li class="fragment fade-in">SSDLC</li>
+						<li class="fragment fade-in">DevSecOps</li>
+						<li class="fragment fade-in">Vorgehensmodelle</li>
+					</ol>
+				</section>
+				<section>
+					<h2>Was interessiert mich Softwaresicherheit?</h2>
+					<ul>
+						<li class="fragment fade-in">Software ist aus allen Bereichen des Lebens nicht mehr wegzudenken</li>
+						<li class="fragment fade-in">Immer mehr immer komplexere und vernetztere Software verarbeitet immer mehr Daten</li>
+						<li class="fragment fade-in">Verizon DBIR 2019: mehr als <span class="fragment highlight-red">60%</span> aller Angriffe über Webapplikationen</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Aber wie bekommt man Software "sicher"?</h2>
+					<p class="fragment fade-up">Einfach immer alles richtig machen!</p>
+				</section>
+				<section>
+					<h2>Neue Idee: Pentest!</h2>
+					<p class="fragment fade-in">1,337 Findings, davon 42 kritisch... <span class="fragment fade-in">und nun?</span></p>
+				</section>
+				<section>
+					<h2>Pentests...</h2>
+					<p class="fragment fade-in">... kosten viel Zeit und Geld.</p>
+					<p class="fragment fade-in">... finden nie alle Probleme.</p>
+					<p class="fragment fade-in">... entdecken Probleme erst (zu) spät.</p>
+					<p class="fragment fade-in">... sind trotzdem besser als nichts.</p>
+				</section>
+				<section>
+					<h2>Neue Idee:</h2>
+					<p><span style="visibility: hidden;">Einfach </span><span class="fragment fade-in" data-fragment-index="0">meistens </span><span class="fragment fade-in" data-fragment-index="1">vieles </span><span class="fragment fade-in" data-fragment-index="2">besser </span><span style="visibility: hidden;">machen!</span></p>
+					<p>Einfach <span class="fragment strikethrough" data-fragment-index="0">immer</span> <span class="fragment strikethrough" data-fragment-index="1">alles</span> <span class="fragment strikethrough" data-fragment-index="2">richtig</span> machen!</p>
+				</section>
+				<section>
+					<h1>Secure Software Development Lifecycle</h1>
+				</section>
+				<section>
+					<img src="media/securesoftware/SDLC.svg" width="100%">
+					<section>
+						<h2>Entwicklungsprozess</h2>
+					</section>
+					<section>
+						<h3>Planung</h3>
+						<ul>
+							<li class="fragment fade-in">Projektinhalt und -ziel festlegen</li>
+							<li class="fragment fade-in">Machbarkeit evaluieren</li>
+							<li class="fragment fade-in">Projektrisiken identifizieren</li>
+							<li class="fragment fade-in">Personal- und Zeitplanung</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Analyse</h3>
+						<ul>
+							<li class="fragment fade-in">Anforderungen erfassen</li>
+							<li class="fragment fade-in">Prozesse modellieren</li>
+						    <li class="fragment fade-in">Subjekte und Objekte festlegen</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Design</h3>
+						<ul>
+							<li class="fragment fade-in">Architektur und Technologien</li>
+							<li class="fragment fade-in">Entwurfsmuster und Komponenten</li>
+							<li class="fragment fade-in">Spikes und Prototypen</li>
+							<li class="fragment fade-in">APIs und andere IO</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Code</h3>
+						<ul>
+							<li class="fragment fade-in">Implementation von Komponenten</li>
+							<li class="fragment fade-in">Integration zu Gesamtsystem</li>
+							<li class="fragment fade-in">Modul- und Integrationstests?</li>
+							<li class="fragment fade-in">Regressionstests?</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Test</h3>
+						<ul>
+							<li class="fragment fade-in">Funktionale Vollständigkeit</li>
+							<li class="fragment fade-in">Korrektheit</li>
+							<li class="fragment fade-in">Automatisierte und/oder manuelle Tests</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Betrieb</h3>
+						<ul>
+							<li class="fragment fade-in">Deployment</li>
+							<li class="fragment fade-in">Maintenance</li>
+							<li class="fragment fade-in">Stilllegung</li>
+							<li class="fragment fade-in">DevOps?</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Prozessmodelle</h3>
+						<ul>
+							<li class="fragment fade-in">Scrum</li>
+							<li class="fragment fade-in">Extreme Programming</li>
+							<li class="fragment fade-in">V-Modell XT</li>
+							<li class="fragment fade-in">Kanban</li>
+							<li class="fragment fade-in">Proprietärer Prozess</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Voraussetzungen</h3>
+						<ul>
+							<li class="fragment fade-in">Prozess ist spezifiziert</li>
+							<li class="fragment fade-in">Prozess wird befolgt</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h2>Aber wie wird der Entwicklungsprozess "secure"?</h2>
+				</section>
+				<section>
+					<img src="media/securesoftware/SDLC.svg" width="100%">
+					<section>
+						<h2>Just add Security!</h2>
+						<ul>
+							<li class="fragment fade-in">Security-Aktivitäten zu Prozess hinzufügen</li>
+							<li class="fragment fade-in">Probleme früh im Prozess erkennen</li>
+							<li class="fragment fade-in">Aktivitäten bauen auf einander auf</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Planung</h3>
+						<ul>
+							<li class="fragment fade-in">Sicherheitsrisiken erkennen und abschätzen</li>
+							<li class="fragment fade-in">Einordnung in Gesamtrisikokonzept</li>
+							<li class="fragment fade-in">Securitykompetenzen im Team sicherstellen</li>
+							<li class="fragment fade-in">Zusätzliches Training oder Personal?</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Analyse</h3>
+						<ul>
+							<li class="fragment fade-in">Sicherheitsanforderungen erfassen</li>
+							<li class="fragment fade-in">Sicherheitskategorien für Daten festlegen</li>
+							<li class="fragment fade-in">Prozessrisiken erkennen</li>
+							<li class="fragment fade-in">Berechtigungen/Zugriff festlegen</li>
+							<li class="fragment fade-in">Akzeptanzkriterien festlegen</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Design</h3>
+						<ul>
+							<li class="fragment fade-in">Sicherheitsanforderungen berücksichtigen</li>
+							<li class="fragment fade-in">Angriffsfläche analysieren und reduzieren</li>
+							<li class="fragment fade-in">Threat Model erstellen und auswerten</li>
+							<li class="fragment fade-in">Architekturreview</li>
+							<li class="fragment fade-in">Guidelines</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Code</h3>
+						<ul>
+							<li class="fragment fade-in">Standardkomponenten verwenden</li>
+							<li class="fragment fade-in">Sauberer und lesbarer Code</li>
+							<li class="fragment fade-in">Guidelines</li>
+							<li class="fragment fade-in">Code Review (Checklisten!)</li>
+							<li class="fragment fade-in">Tooling (SAST etc.)</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Test</h3>
+						<ul>
+							<li class="fragment fade-in">Automatisierte Security-Tests</li>
+							<li class="fragment fade-in">SAST, IAST, DAST</li>
+							<li class="fragment fade-in">Dependency Checks</li>
+							<li class="fragment fade-in">Pentesting - auch nach Deployment</li>
+							<li class="fragment fade-in">Fuzzing</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Betrieb</h3>
+						<ul>
+							<li class="fragment fade-in">Sicheres Deployment</li>
+							<li class="fragment fade-in">Patchkonzept</li>
+							<li class="fragment fade-in">Incident Response</li>
+							<li class="fragment fade-in">DevSecOps?</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Übergreifende Aktivitäten</h3>
+						<ul>
+							<li class="fragment fade-in">Strategie</li>
+							<li class="fragment fade-in">Training</li>
+							<li class="fragment fade-in">Metriken</li>
+							<li class="fragment fade-in">Bereitstellen von Materialien</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Grundsätze</h3>
+						<ul>
+							<li class="fragment fade-in">Prozess ist dokumentiert</li>
+							<li class="fragment fade-in">Prozess wird gelebt</li>
+							<li class="fragment fade-in">Guidelines, Checklisten, Vorlagen</li>
+							<li class="fragment fade-in">Hilfe für Entwickler, keine Gängelung</li>
+							<li class="fragment fade-in">Management- und Entwickler-Buy-In essentiell</li>
+						</ul>
+					</section>
+					<section>
+						<p>... und wenn man sonst nichts tut...</p>
+					</section>
+					<section>
+						<h2>Training und Guidelines</h2>
+					</section>
+				</section>
+				<section>
+					<h1>DevSecOps</h1>
+				</section>
+				<section>
+					<h2>DevOps - Herausforderungen</h2>
+					<ul>
+						<li class="fragment fade-in">Kurze Zyklen, hohe Geschwindigkeit</li>
+						<li class="fragment fade-in"><q>Move fast and break things</q></li>
+						<li class="fragment fade-in">Klassische Security bremst</li>
+						<li class="fragment fade-in">Mangelndes Verständnis für Dev-Prozesse bei Security-Team</li>
+						<li class="fragment fade-in">Risiken in Pipeline</li>
+					</ul>
+				</section>
+				<section>
+					<h2>DevOps - Chancen</h2>
+					<ul>
+						<li class="fragment fade-in">Klassischer Pentest als "Gate" unmöglich</li>
+						<li class="fragment fade-in">Hoher Automatisierungsgrad</li>
+						<li class="fragment fade-in">Prozess ist wichtig</li>
+						<li class="fragment fade-in">Teamarbeit, Knowledge Sharing</li>
+						<li class="fragment fade-in">Kurze Feedbackzyklen</li>
+					</ul>
+				</section>
+				<section>
+					<h2>DevOps - Lösungen</h2>
+					<ul>
+						<li class="fragment fade-in">Shift security left (SSDLC)</li>
+						<li class="fragment fade-in">Security-Tooling und Automatisierung</li>
+						<li class="fragment fade-in">Enge Integration mit Dev und Ops (DevSecOps)</li>
+						<li class="fragment fade-in">Monitoring und "Red Teaming"</li>
+						<li class="fragment fade-in">Aus Erfahrung lernen (PDCA)</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Vorgehensmodelle</h1>
+				</section>
+				<section>
+					<h2>Sicherer Entwicklungsprozess fällt nicht vom Himmel... was tun?</h2>
+				</section>
+				<section>
+					<section>
+						<h2>"Fertige" Modelle</h2>
+						<ul>
+							<li class="fragment fade-in">Microsoft SDL</li>
+							<li class="fragment fade-in">Secure Scrum</li>
+							<li class="fragment fade-in">OWASP SAMM</li>
+							<li class="fragment fade-in">BSIMM</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Microsoft SDL</h3>
+						<ul>
+							<li class="fragment fade-in">Präskriptives Modell</li>
+							<li class="fragment fade-in">12 Praktiken</li>
+							<li class="fragment fade-in">Ursprünglich eher Wasserfall</li>
+							<li class="fragment fade-in">Seit 2002 entwickelt und verbessert</li>
+							<li class="fragment fade-in">Seit 2004 bei Microsoft verpflichtend</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Microsoft SDL - Praktiken</h3>
+						<div class="colcontainer">
+							<div class="col">
+								<ul>
+									<li class="fragment fade-in">Training</li>
+									<li class="fragment fade-in">Security Requirements</li>
+									<li class="fragment fade-in">Metrics and Reporting</li>
+									<li class="fragment fade-in">Threat Modeling</li>
+									<li class="fragment fade-in">Design Requirements</li>
+									<li class="fragment fade-in">Cryptography Standards</li>
+								</ul>
+							</div>
+							<div class="col">
+								<ul>
+									<li class="fragment fade-in">Manage Third-Party Risk</li>
+									<li class="fragment fade-in">Approved Tools</li>
+									<li class="fragment fade-in">Static Analysis (SAST)</li>
+									<li class="fragment fade-in">Dynamic Analysis (DAST)</li>
+									<li class="fragment fade-in">Penetration Testing</li>
+									<li class="fragment fade-in">Incident Response Process</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3>Microsoft SDL - Maturity Model</h3>
+						<ul>
+							<li class="fragment fade-in">Wie gut ist meine SDL-Implementation?</li>
+							<li class="fragment fade-in">Guides zur Implementierung</li>
+							<li class="fragment fade-in">Maturity Level "messen"</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Secure Scrum</h3>
+						<ul>
+							<li class="fragment fade-in">Modifikation von Standard-Scrum</li>
+							<li class="fragment fade-in">IT Security Research Group München</li>
+							<li class="fragment fade-in">Zusätzliche Aktivitäten</li>
+							<li class="fragment fade-in">Mapping auf Scrum-Aktivitäten</li>
+						</ul>
+					</section>
+					<section>
+						<h3>OWASP SAMM</h3>
+						<ul>
+							<li class="fragment fade-in">OWASP Software Assurance Maturity Model</li>
+							<li class="fragment fade-in">Präskriptives Modell</li>
+							<li class="fragment fade-in">Offener Erstellungsprozess</li>
+							<li class="fragment fade-in">Vier Geschäftsfunktionen</li>
+							<li class="fragment fade-in">12 Praktiken</li>
+							<li class="fragment fade-in">Version 2.0: 15 Praktiken</li>
+						</ul>
+					</section>
+					<section>
+						<h3>BSIMM</h3>
+						<ul>
+							<li class="fragment fade-in">Building Security In Maturity Model</li>
+							<li class="fragment fade-in">Deskriptives Modell</li>
+							<li class="fragment fade-in">Basiert auf Erhebungen zu existierenden Sicherheitsprogrammen</li>
+							<li class="fragment fade-in">Ursprünglich Untersuchung von Cigital/Synopsys</li>
+							<li class="fragment fade-in">Mittlerweile Beteiligung von 122 Firmen</li>
+							<li class="fragment fade-in">Geeignet vor allem für Evaluation</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h2>OWASP SAMM 1.5</h2>
+					<img src="media/securesoftware/samm.png">
+				</section>
+				<section>
+					<h2>OWASP SAMM</h2>
+					<ul>
+						<li class="fragment fade-in">12 Praktiken</li>
+						<li class="fragment fade-in">Jede Praktik hat drei Reifegrade</li>
+						<li class="fragment fade-in">Zwei Aktivitäten pro Reifegrad</li>
+						<li class="fragment fade-in">Scoring der Aktivitäten</li>
+						<li class="fragment fade-in">Metriken</li>
+					</ul>
+				</section>
+				<section>
+					<h2>OWASP SAMM</h2>
+					<ul>
+						<li class="fragment fade-in">Umfangreiche Beschreibung von Aktivitäten</li>
+						<li class="fragment fade-in">Tools und Worksheets</li>
+						<li class="fragment fade-in">How To-Dokument</li>
+						<li class="fragment fade-in">Quick Start Guide</li>
+					</ul>
+				</section>
+				<section>
+					<h2>OWASP SAMM - Einstieg</h2>
+					<ul>
+						<li class="fragment fade-in">Initiales Assessment durchführen</li>
+						<li class="fragment fade-in">Roadmap auswählen oder erstellen</li>
+						<li class="fragment fade-in">Iterative Verbesserung planen</li>
+						<li class="fragment fade-in">Umsetzen, Messen, Anpassen (PDCA)</li>
+						<li class="fragment fade-in">Iterieren</li>
+					</ul>
+				</section>
+				<section>
+					<h2>OWASP SAMM - Assessment</h2>
+					<p>Assessment Worksheets mit Fragen</p>
+					<img src="media/securesoftware/assessment.png">
+				</section>
+				<section>
+					<h2>OWASP SAMM - Assessment</h2>
+					<p>Scorecard erstellen</p>
+					<img src="media/securesoftware/scorecard.png">
+				</section>
+				<section>
+					<h2>OWASP SAMM - Roadmap</h2>
+					<p>Roadmap-Templates</p>
+					<img src="media/securesoftware/roadmap.png">
+				</section>
+				<section>
+					<h2>OWASP SAMM - Roadmap</h2>
+					<ul>
+						<li class="fragment fade-in">Roadmap-Template nach Unternehmenstyp wählen</li>
+						<li class="fragment fade-in">Roadmap anpassen</li>
+						<li class="fragment fade-in">Was bringt am meisten?</li>
+						<li class="fragment fade-in">Was ist für planvolles Vorgehen nötig?</li>
+					</ul>
+				</section>
+				<section>
+					<h2>OWASP SAMM - Planen</h2>
+					<ul>
+						<li class="fragment fade-in">Zielvorgaben für Phase aus Roadmap ablesen</li>
+						<li class="fragment fade-in">Aktivitäten auswählen</li>
+						<li class="fragment fade-in">Maßnahmen zur Implementation planen</li>
+						<li class="fragment fade-in">Personen, Dokumente, Prozesse</li>
+						<li class="fragment fade-in">Kontrollmechansimen einplanen</li>
+					</ul>
+				</section>
+				<section data-background="media/securesoftware/cheers.gif">
+					<h1 style="visibility: hidden;">FILL TEXT<br />FILL TEXT<br />FILL TEXT<br />FILL TEXT</h1>
+					<h2>Fertig - alles ist sicher!</h2>
+				</section>
+				<section>
+					<h2>Referenzen</h2>
+					<ul>
+						<li>https://www.microsoft.com/en-us/securityengineering/</li>
+						<li>https://owaspsamm.org/</li>
+						<li>https://www.bsimm.com/</li>
+						<li>https://cheatsheetseries.owasp.org/</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Vielen Dank für die Aufmerksamkeit.</h1>
+					<h1>Fragen?</h1>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				transition: 'convex',
+				dependencies: [
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

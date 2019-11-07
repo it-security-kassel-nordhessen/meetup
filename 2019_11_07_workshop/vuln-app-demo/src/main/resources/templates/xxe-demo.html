@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+<title>XXE Demo</title>
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-12">
+				<br /> <br />
+				<h2>Benutzerverwaltung</h2>
+			</div>
+		</div>
+
+		<div class="row pt-5">
+
+			<div class="col-12">
+				<h5 class="text-primary">Eingabe Benutzerdaten:</h5>
+			</div>
+
+			<div class="col-12">
+				<form action="" method="post">
+					<textarea name="xmlContent" th:utext="${xmlContent}" rows="10"
+						class="w-100" />
+
+					<br />
+					<button type="submit" class="btn btn-primary">Tabelle
+						erzeugen</button>
+
+				</form>
+
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-12">
+				<br />
+				<h5 class="text-primary">Ausgabe Benutzertabelle:</h5>
+			</div>
+		</div>
+
+		<div class="row border">
+			<div class="col-12">
+				<div th:utext="${xmlParsedOutput}"></div>
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<script src="/js/jquery-3.3.1.slim.min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

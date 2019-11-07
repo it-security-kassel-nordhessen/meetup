@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+<title>File Demo</title>
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="row pt-5">
+			<div class="col-12">
+				<h2>Tier Wiki</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<a href="/file-demo?wikifile=katzen.txt">Katzen</a>
+			</div>
+			<div class="col-12">
+				<a href="/file-demo?wikifile=hunde.txt">Hunde</a>
+			</div>
+			<div class="col-12">
+				<a href="/file-demo?wikifile=kuehe.txt">Kühe</a>
+			</div>
+		</div>
+
+		<div class="row pt-3">
+			<div class="col-12">
+			<textarea th:text="${fileContent}" rows="40" class="w-100"></textarea>
+			</div>
+		</div>
+
+		
+
+	</div>
+
+	<script src="/js/jquery-3.3.1.slim.min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -5,7 +5,9 @@ docker run -ti -v `pwd`/metasploit-framework:/home/msf msf bash
 ```
 or
 
-`docker run -ti -v `pwd`/metasploit-framework:/home/msf --network=<NETWORK> msf bash` 
+```
+docker run -ti -v `pwd`/metasploit-framework:/home/msf --network=<NETWORK> msf bash
+``` 
 to add it to a specific network (use docker network list to get a list of all networks)
 
 `bundle install`

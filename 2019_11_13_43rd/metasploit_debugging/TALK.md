@@ -22,7 +22,7 @@ Zur Einsicht der Dokumentation von Methoden, Klassen usw.
 
 Referenzprojekt: [https://github.com/secf00tprint/payloadtester_lfi_rfi](https://github.com/secf00tprint/payloadtester_lfi_rfi)
 
-Klonen und starten mit `./start_linux_network`
+Klonen und starten mit `./start_linux_network.sh`
 
 ## Metasploit bauen und dem Netzwerk hinzufügen
 

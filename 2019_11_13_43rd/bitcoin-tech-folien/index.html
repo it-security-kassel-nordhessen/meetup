@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="Technik hinter Bicoin in Deutsch erklärt">
+		<meta name="author" content="Stephan Oeste">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+<style type="text/css">
+        .reveal h1,
+        .reveal h2,
+        .reveal h3,
+        .reveal h4,
+        .reveal h5,
+        .reveal h6 {
+            word-wrap: normal;
+            -webkit-hyphens: manual;
+            -moz-hyphens: manual;
+            hyphens: manual;
+        }
+    </style>
+
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+<section>
+	<h1>Bitcoin technische Grundlagen</h1>
+	<h3>Geld für das Internet</h3>
+	<p>
+		<small>Stephan Oeste / <a href="https://twitter.com/emzy">@emzy</a></small>
+	</p>
+</section>
+
+
+
+<section>
+	<section>
+		<h2>Fragen Vorweg</h2>
+	</section>
+	<section>
+		<h2>Wer hat schon von Bitcoin gehört?</h2>
+		<img width="70%" height="70%" src="pictures/meme/startrek-btc.jpg" alt="Everyone excited about Bitcoins. Bit hav no fucking clue what it is.">
+		
+	</section>
+	<section>
+		<h2>Wer besitzt schon Bitcoins?</h2>
+		<img width="90%" height="90%" src="pictures/meme/bitcoin-owners-2c6a0bae0f071cbbf0bb3d5b11d90a82.png" alt="bitcoin owners meme">
+	</section>
+	<section>
+		<h2>Wer weiß schon wie Bitcoin funktioniert?</h2>
+		<img width="60%" height="70%" src="pictures/meme/bitcoin-minig.jpg" alt="bitcoin mining meme">
+	</section>
+</section>
+
+<section>
+	<section>
+		<h2>Was ist Bitcoin</h2>
+		<ul>
+			<li>Bitcoin ist ein Protokoll</li>
+			<li>Dezentral ohne Herausgeber oder Hersteller</li>
+			<li>Opensource (MIT License)</li>
+			<li>Senden von Geld überallhin in beliebiger Höhe</li>
+			<li>Nicht Umkehrbar oder Aufhaltbar</li>
+			<li>Herausgabe mathematisch festgelegt. Max. 21 Milionen bis 2140</li>	
+			<li>Es basiert auf öffentlicher Buchführung <b>Blockchain</b></li>
+			<li>Nicht Anonym sondern Pseudonym</li>
+			<li>Die Miner sichern das Netz und werden mit Bitcoins belohnt</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h2>Die Blockchain</h2>
+		<ul>
+			<li>Aufgabe</li>
+			<ul>
+				<li>Die Reihenfolge der Transaktionen festlegen</li>
+				<li>Verhindern von <b>double-spends</b></li>
+			</ul>
+			<li>Umsetzung</li>
+			<ul>
+				<li>Globale Liste aller Kontostände, die <b>Blockchain</b></li>
+				<li>Die <b>Blockchain</b> besteht aus einzelnen <b>Blocks</b> in denen <b>Transaktionen</b> stehen</li>
+				<li>Jeder <b>Block</b> enthält den Hash des vorherigen Block</li>
+				<li>Damit ist die Reihenfolge vorgegeben und man kann keinen <b>Block</b> einfügen</li>
+			</ul>
+		</ul>
+	</section>
+	<section>
+		<h2>Die Blockchain</h2>
+		<img width="90%" height="90%" src="pictures/blockchain.png" alt="Blockchain">	
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Mining</h2>
+		<ul>
+			<li>Es ist Rechenleistung nötig um einen Block zu Signieren und in die <b>Blockchain</b> zu hängen</li>
+			<li>Das sichert die <b>Blockchain</b> gegen spätere Änderungen</li>
+			<li>Anreiz für das Mining sind Bitcoins die man für das Finden eines <b>Blocks</b> bekommt</li>
+			<li><b>Blocks</b> mussen eine gewisse <b>Difficulty</b> erfüllen.</li>
+			<li>Diese wird automatisch angepasst, damit alle 10 Minuten ein <b>Block</b> gefunden wird</li>
+			<li>Die <b>Blockchain</b> mit der meisten Rechenleistung ist die aktuell gültige</li>
+		<ul>
+	</section>
+	<section>
+		<h2>Difficulty</h2>
+		<a class="image" href="http://bitcoin.sipa.be/" target="_blank">
+			<img width="90%" height="90%" src="pictures/difficulty.png" alt="Bitcoin Difficulty">
+		</a>
+	</section>
+	<section>
+		<h2>Gesamtmenge Bitcoins</h2>
+		<img width="70%" height="70%" src="pictures/bitcoins_over_time_graph.png" alt="Bitcoin Zuwachs">
+		<br />
+		<b>Mining Block Reward</b> wird alle 210.000 Blöcken halbiert, ca. alle 4 Jahre
+	</section>
+	<section>
+		<h2>Blockchain Demo</h2>
+			<a href="https://anders.com/blockchain/hash" target="_blank">anders.com Blockchain Demo</a>
+		<br />
+	</section>
+</section>
+
+
+<section>
+	<h2>Bob will Alice Bitcoins senden</h2>
+	<ol>
+		<li>Alice installiert sich eine Wallet-Software</li>
+		<li>Diese erzeugt einen <b>privaten Schlüssel</b>, <b>öffentlichen Schlüssel</b> und die <b>Adresse</b></li>
+		<li>Bob sendet die Bitcoins an die <b>Adresse</b> von Alice</li>
+	</ol>
+</section>
+
+<section>
+	<section>
+		<h2> Alice installiert eine Wallet</h2>
+		<ul><li>Bitcoin-core</li>
+		<li>Electrum (Python)</li>
+		<li>BRD (iOS)</li>
+		<li>Mycelium (Android/iOS)</li>
+		</ul>
+        </section>
+	<section>
+		<h2>Schlüssel und Adressen</h2>
+		<img width="90%" height="90%" src="pictures/keys.png" alt="Schlüssel und Adressen">
+		<br />
+		<a href="https://iancoleman.io/bip39/" target="_blank">Mnemonic Code Converter</a>
+	</section>
+	<section> 
+		<h2>Privater Schlüssel</h2>
+		<ul>
+			<li>Es wird ein zufälliger 256 Bit <b>privaten Schlüssel</b> generiert</li>
+			<li>HEX: e3b0c44298fc1c149afbf4c8996fb9242...</li>
+		</ul>
+        </section>
+	<section> 
+		<h2>Öffentlicher Schlüssel</h2>
+		<ul>
+
+			<li>
+				Aus dem privaten Schlüssel wird der <b>öffentliche Schlüssel</b> berechnet
+				<br />
+				öffentlicher Schlüssel = privater Schlüssel * Generatorpunkt 
+				<br />
+				(k = K * G)
+			<li>HEX: 03a34b99f22c790c4e36b2b3c2c35a36d...</li>
+			</li>
+		</ul>
+        </section>
+	<section> 
+		<h2>Bitcoin Adresse</h2>
+		<ul>
+			<li>
+				daraus wird die <b>Bitcoin Adresse</b> berechnet
+				<br />
+				Hashing des öffentlichen Schlüssel mit SHA256 und RIPEMD160
+				<br />
+				(A = RIPEMD160(SHA256(K))
+			<li>HEX: 9a1c78a507689f6f54b847ad1cef1e614ee23f1e</li>
+			</li>
+		</ul>
+        </section>
+	<section> 
+		<h2>Base58Check Bitcoin Adresse</h2>
+		<ul>
+			<li>
+				zum Darstellen wird noch Base58Check verwendet
+			<li><b>1F3sAm6ZtwLAUnj7d38pGFxtP3RVEvtsbV</b>
+			</li></ul>
+			</li>
+		</ul>
+		<br />
+			<img width="20%" height="20%" src="pictures/qrcode.png" alt="Bitcoin Adresse als QR-Code">
+	</section>
+	<section>
+                <h2>Bitcoin Adresse</h2>
+		<a class="image" href="pictures/Bitcoin Adress Map.jpg" target="_blank">
+			<img width="90%" height="90%" src="pictures/Bitcoin Adress Map.jpg" alt="Bitcoin Adress Map">
+		</a>
+	</section>
+
+</section>
+
+<section>
+	<section>
+		<h2>Inhalt einer Transaktion</h2>
+		<ul>
+			<li>
+				Input
+				<br />
+				<small>enthält den <i>proof of ownership</i> eines unspend Outputs einer alten Transaktion mit der digitale Signatur des <b>privaten Schlüssels</b> von Bob</small>
+			</li>
+			<li>
+				Output
+				<br />
+				<small>ein <i>Script</i> das nur mit dem zugehörigen <b>privaten Schlüssel</b> der Empfängeradresse gelöst werden kann.</small>
+			</li>
+			<li>
+				Betrag zu jedem Output	
+				<br />
+				<small>z.B. 0,02 BTC</small>
+			</li>
+			<li>
+				Weitere Inputs und Outputs können enthalten sein
+			</li>
+			<li>
+				Gebühr (indirekt)
+				<br />
+				<small>z.B. 0,0001 BTC</small>
+				
+			</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Eine Beispiel-Transaktion</h2>
+		<a class="image" href="https://blockchain.info/de/tx/01044e792d326aea755cb0394344b755c7dc5f90f406959414b8a2a07e5db9b8" target="_blank">
+			<img width="90%" height="90%" src="pictures/blockchain.info1.png" alt="blockchain.info">
+		</a>
+		<br />
+		<small>blockchain.info</small>
+	</section>
+	<section>
+		<h2>Bob sendet Alice Bitcoins</h2>
+		<ol>
+			<li>Bob kopiert die Adresse per Copy+Paste oder scannt den QR-Code</li>
+			<li>Bob klickt Bitcoins-Senden in seiner Wallet</li>
+			<li>
+				Alice und Bob warten, dass die Transaktion Bestätigungen erhält
+				<br />
+				<small>das die Transaktion in die <b>Blockchain</b> aufgenommen wird</small>
+			</li>
+		</ol>
+	</section>
+	<section>
+		<h2>Bobs Wallet sendet die Transaktion in das Bitcoin P2P Netz</h2>
+		<ol>
+			<li>
+				Die fertige <b>Transaktion</b> wird im P2P Netz verteilt
+				<br />
+				<small>Die Wallet sendet sie an alle aktuell verbundenen P2P Nodes</small>
+			</li>
+			<li>
+				Alice sieht eine <b>Transaktion</b> ohne Bestätigungen
+				<br />
+				<small>Die Wallet hat die <b>Transaktion</b> vom P2P Netz empfangen</small>
+			</li>
+			<li>
+				Ein Miner sammelt die <b>Transaktion</b> ein und packt sie in einen <b>Block</b>
+			</li>
+			<li>
+				Er sendet den gefunden <b>Block</b> über P2P Netz	
+			</li>
+			<li>
+				Andere P2P-Clients kontrollieren den Block und bauen ihn in ihre Kopie der <b>Blockchain</b> ein	
+			</li>
+			<li>
+				Alice sieht das die <b>Transaktion</b> ihre erste Bestätigung erhält	
+			</li>
+		</ol>
+	</section>
+</section>
+
+<section>
+	<h2>51% Attack</h2>
+	<ul>
+		<li>
+			Ein Angreifer braucht mehr als 50% der Rechenleisung des Netzwerkes
+		</li>
+		<li>
+			Auswirkung: Häufige reorganisation der <b>Blockchain</b>
+		</li>
+		<li>
+			Auswirkung: Zensur von Transaktion(en)
+		</li>
+		<li>
+			Auswirkung: keine neuen Transaktionen zulassen
+		</li>
+	</ul>
+</section>
+
+
+<section>
+	<h2>Links</h2>
+	<ul>
+		<li>Original PDF von Satoshi Nakamoto <a href="https://bitcoin.org/bitcoin.pdf" target="_blank">https://bitcoin.org/bitcoin.pdf</a></li>
+		<li>Buch von Andreas M. Antonopoulos <a href="https://github.com/aantonop/bitcoinbook" target="_blank">https://github.com/aantonop/bitcoinbook</a></li>
+		<li>Neue offizelle Dokumentation <a href="https://bitcoin.org/en/developer-guide" target="_blank">https://bitcoin.org/en/developer-guide</a></li>
+		<li>Viele Informationen <a href="https://www.lopp.net/bitcoin-information.html" target="_blank">https://www.lopp.net/bitcoin-information.html</a></li>
+		<li>51% Attack <a href="https://www.investopedia.com/terms/1/51-attack.asp" target="_blank">https://www.investopedia.com/terms/1/51-attack.asp</a></li>
+		<li><a href="https://www.bitaddress.org/" target="_blank">https://www.bitaddress.org/</a></li>
+	</ul>
+</section>
+	
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

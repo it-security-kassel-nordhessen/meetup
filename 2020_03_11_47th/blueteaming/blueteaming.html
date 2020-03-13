@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Sans Holiday Hack Challenge 2019 - Blueteaming</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="imgs/favicon.ico" type="image/x-icon">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+
+       /*
+       transparent pictures
+       */
+       img.real_transparency {
+           background:none !important;
+           border:none !important;
+           box-shadow:none !important;
+       }
+
+			 /*
+			 Slides with two columns
+			 */
+			.left_right:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-background-image="imgs/bg-2019.png">
+						<h2 style="margin-top:25%;color:blue">Blueteaming</h2>
+				</section>
+
+
+				<section data-background-image="imgs/bg-2019.png" data-state="blur-extra">
+						<div style="color:black;font-weight:bold;font-size:1.5em">
+						<p>DeepBlueCLI</p>
+						<p>Splunk</p>
+						<p>Graylog</p>
+					</div>
+				</section>
+
+
+				<section data-background-image="imgs/quest3.png" data-background-size="contain">
+						<a href="https://downloads.elfu.org/Security.evtx.zip">
+							<div style="position:fixed;width:100%;height:100%;left:0;top:0">
+							</div>
+						</a>
+				</section>
+
+				<section data-background-image="imgs/bushyevergreen.png" data-background-size="contain">
+						<a href="https://github.com/sans-blue-team/DeepBlueCLI">
+							<div style="position:fixed;width:100%;height:100%;left:0;top:0">
+									<img class="fragment" src="imgs/bushyevergreen_hint.png"/>
+							</div>
+						</a>
+				</section>
+
+				<section data-background-image="imgs/quest4.png" data-background-size="contain">
+						<a href="https://downloads.elfu.org/sysmon-data.json.zip">
+							<div style="position:fixed;width:100%;height:100%;left:0;top:0">
+							</div>
+						</a>
+				</section>
+
+				<section>
+						<pre><code class="hljs bash">
+grep -C 5 -i lsass sysmon-data.json
+grep -C 5 -i '"ppid": 3440' sysmon-data.json
+	</code></pre>
+				</section>
+
+				<section data-background-image="imgs/quest6.png" data-background-size="contain">
+				</section>
+
+				<section data-background-image="imgs/professorbanas.png" data-background-size="contain">
+									<a href="https://splunk.elfu.org/de-DE/account/login?return_to=%2Fde-DE%2F">
+										<div style="position:fixed;width:100%;height:100%;left:0;top:0">
+											<img class="fragment" src="imgs/professorbanas_hint.png"/>
+										</div>
+									</a>
+				</section>
+
+				<section>
+					<img src="imgs/splunk-technology-partner-logo.jpg"/>
+					<p>Log-, Monitoring und Reporting-Plattform</p>
+				</section>
+
+				<section data-background-image="imgs/splunk1.png" data-background-size="contain">
+
+						<div style="position:fixed;width:100%;height:100%;left:0;top:0">
+							<img class="fragment" width="100%" src="imgs/splunk1_answer.png"/>
+						</div>
+					</a>
+				</section>
+
+<section>
+						<a href="https://splunk.elfu.org/de-DE/app/SA-elfusoc/elfusoc">
+				<pre><code class="hljs bash">
+				sweetums
+				</code>
+				</pre>
+									</a>
+</section>
+
+				<section data-background-image="imgs/eventlog_encyclopedia.png" data-background-size="contain">
+					<a href="https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/">
+						<div style="position:fixed;width:100%;height:100%;left:0;top:0">
+						</div>
+					</a>
+				</section>
+
+				<section data-background-image="imgs/splunk2.png" data-background-size="contain">
+						<img class="fragment" width="80%" src="imgs/splunk2_1.png"/>
+				</section>
+
+				<section>
+					<a href="https://splunk.elfu.org/de-DE/app/SA-elfusoc/search?q=search index%3Dmain santa">
+						<pre><code class="hljs bash">
+index=main santa
+	</code></pre>
+</a>
+				</section>
+
+				<section>
+					<a href="https://splunk.elfu.org/de-DE/app/SA-elfusoc/elfusoc">
+						<pre><code class="hljs bash">
+C:\Users\cbanas\Documents\Naughty_and_Nice_2019_draft.txt
+	</code></pre>
+</a>
+				</section>
+
+				<section data-background-image="imgs/splunk3.png" data-background-size="contain">
+					<a href="https://www.youtube.com/watch?v=0T6-DQtzCgM">
+						<div style="position:fixed;width:100%;height:100%;left:0;top:0">
+						<img class="fragment" width="80%" src="imgs/splunk3_1.png"/>
+					</div>
+				</a>
+				</section>
+
+				<section data-background-image="imgs/eventcode_3.png" data-background-size="contain">
+				</section>
+
+				<section>
+					<a href="https://splunk.elfu.org/de-DE/app/SA-elfusoc/search?q=search index=main sourcetype=XmlWinEventLog:Microsoft-Windows-Sysmon/Operational powershell EventCode=3">
+						<pre><code class="hljs bash">
+index=main
+sourcetype=XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
+powershell
+EventCode=3
+
+</code></pre>
+</a>
+			</section>
+
+			<section>
+				<a href="https://splunk.elfu.org/de-DE/app/SA-elfusoc/elfusoc">
+					<pre><code class="hljs bash">
+144.202.46.214.vultr.com
+</code></pre>
+</a>
+			</section>
+
+			<section data-background-image="imgs/graylog.png" data-background-size="contain">
+				<a href="https://www.youtube.com/watch?v=0T6-DQtzCgM">
+					<div style="position:fixed;width:100%;height:100%;left:0;top:0">
+					<img class="fragment" width="50%" src="imgs/pepper_minstix.png"/>
+				</div>
+			</a>
+			</section>
+
+			</div>
+		</div>
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+
+				// Parallax background image
+	parallaxBackgroundImage: 'imgs/fractal-1812490_gray_dark.png', // e.g. "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
+
+	// Parallax background size
+	parallaxBackgroundSize: '1920x 1402px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+
+	// Number of pixels to move the parallax background per slide
+	// - Calculated automatically unless specified
+	// - Set to 0 to disable movement along an axis
+	parallaxBackgroundHorizontal: 120,
+	parallaxBackgroundVertical: 100,
+
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

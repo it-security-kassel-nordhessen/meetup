@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Über Zufallsgeneratoren und mehr</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="imgs/favicon.ico" type="image/x-icon">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+
+       /*
+       transparent pictures
+       */
+       img.real_transparency {
+           background:none !important;
+           border:none !important;
+           box-shadow:none !important;
+       }
+
+			 /*
+			 Slides with two columns
+			 */
+			.left_right:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h2>Über Zufallsgeneratoren und mehr</h2>
+				</section>
+
+				<section data-background-image="imgs/ibm360.jpg" data-background-size="contain">
+				</section>
+
+				<section>
+					<a href="https://doc.lagout.org/science/0_Computer Science/2_Algorithms/The Art of Computer Programming (vol. 2_ Seminumerical Algorithms) (3rd ed.) [Knuth 1997-11-14].pdf">Donald Knuth - The Art of Computer Programming Vol. 2 Seminumerical Algorithms</a>
+					<br>
+					<img src="imgs/donaldknuth.jpg"/>
+				</section>
+
+				<section>
+					<h3>Use Cases Zufallszahlen nach Knuth</h3>
+					<p>Simulation</p>
+					<p>Stichproben</p>
+					<p>Entscheidungsfindung</p>
+					<p>Ästhetik</p>
+					<p>Computerprogrammierung</p>
+					<p>Erholung</p>
+				</section>
+
+				<section>
+					<a href="https://www.youtube.com/watch?v=NVjGybihYvE">Jackpot</a>
+					<br>
+					<img width="40%" src="imgs/jackpot_poker.jpg"/>
+				</section>
+
+				<section>
+					<h1>Typen von Zufallsgeneratoren</h1>
+					<p>deterministisch (PRNG)</p>
+					<p>nicht deterministisch</p>
+				</section>
+
+				<section>
+					<h1>PRNGs vs CSPRNG</h1>
+					<p>Statistische Tests</p>
+				</section>
+
+				<section>
+					<a href="https://en.wikipedia.org/wiki/List_of_random_number_generators"><h1>Liste von Zufallszahlengeneratoren</h1>
+					</a>
+				</section>
+
+				<section>
+					<h3>Linear Congruential Generator</h3>
+
+							<pre><code class="hljs bash">
+yi+1 = yi*a + b mod m
+		</code></pre>
+				</section>
+
+				<section>
+					<p>Zahlen können zum Reversen verwendet werden</p>
+					<p>Beispiele:</p>
+					<p><a href="https://www.google.de/search?q=1103515245">1103515245</a></p>
+					<p><a href="https://www.google.de/search?q=29943829">29943829</a></p>
+					<p>vgl <a href="https://rosettacode.org/wiki/Linear_congruential_generator">Rosetta Code</a></p>
+				</section>
+				<section>
+					<h3>Spektral Test</h3>
+				</section>
+
+				<section>
+					<a href="http://portal.idc.ac.il/en/schools/cs/research/documents/sinai_2011.pdf">Vergleich von PRNGs</a>
+					<img src="imgs/comparison_prngs.png"/>
+				</section>
+
+				<section>
+					<a href="https://youtu.be/1cUUfMeOijg">CloudFlare</a>
+				</section>
+
+				<section>
+					<a href="https://youtu.be/xRSDE2FqVLs">Hackaday</a>
+				</section>
+
+				<section>
+					<a href="https://www.fourmilab.ch/hotbits/">HotBits</a>
+				</section>
+
+				<section>
+					<h3>Quantum Computer IBM Q</h3>
+				</section>
+
+				<section>
+				</section>
+
+				<section>
+				</section>
+
+			</div>
+		</div>
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+
+				// Parallax background image
+	parallaxBackgroundImage: 'imgs/fractal-1812490_gray_dark.png', // e.g. "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
+
+	// Parallax background size
+	parallaxBackgroundSize: '1920x 1402px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+
+	// Number of pixels to move the parallax background per slide
+	// - Calculated automatically unless specified
+	// - Set to 0 to disable movement along an axis
+	parallaxBackgroundHorizontal: 120,
+	parallaxBackgroundVertical: 100,
+
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

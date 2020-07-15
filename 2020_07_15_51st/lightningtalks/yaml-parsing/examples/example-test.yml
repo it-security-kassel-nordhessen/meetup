@@ -1,0 +1,13 @@
+# MY ANSIBLE VAULT SECRET FILE
+
+# mysql credentials
+db:
+    user: TEST_USER
+    password: KEEP_THIS_SECRET
+
+# access to rest api
+rest_api:
+    access_token: PLACE_TOKEN_HERE
+
+deprectated:
+  key: REMOVE_THIS

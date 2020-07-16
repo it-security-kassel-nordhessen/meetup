@@ -1,0 +1,44 @@
+$ cat /opt/keycloak-gatekeeper/gatekeeper.yaml 
+
+client-id: docs.heiland.io
+client-secret: XXX
+discovery-url: https://auth.heiland.io/realms/master
+
+tls-cert: /etc/ssl/certs/heiland.io.cert.pem
+tls-private-key: /etc/ssl/private/heiland.io.key.pem
+
+enable-default-deny: true
+enable-refresh-tokens: true
+preserve-host: true
+enable-login-handler: true
+http-only-cookie: true
+enable-token-header: false
+enable-authorization-cookies: false
+
+upstream-timeout: 90s
+upstream-keepalive-timeout: 90s
+server-read-timeout: 90s
+server-idle-timeout: 90s
+upstream-response-header-timeout: 90s
+
+encryption-key: XXX
+listen: 127.0.0.1:3000
+redirection-url: https://docs.heiland.io/
+upstream-url: http://127.0.0.1:4181
+
+resources:
+  - uri: /*
+    roles:
+      - docs
+  - uri: /admin/*
+    methods:
+    - GET
+    - POST
+    roles:
+    - openvpn:vpn-user
+    - trust_level:highest
+    - device_type:managed
+    groups:
+    - admins
+#  headers:
+#    X-Example: foobar

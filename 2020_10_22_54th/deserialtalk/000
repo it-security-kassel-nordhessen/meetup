@@ -1,0 +1,6 @@
+# Talk based on
+
+# linux system with commands: git, base64, tr
+# alias:
+
+urlencode=$'python3 -c "import sys, urllib.parse as ul; \\\n    print (ul.quote_plus(sys.argv[1]))"

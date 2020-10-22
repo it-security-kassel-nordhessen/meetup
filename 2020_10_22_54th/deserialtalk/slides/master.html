@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Deserialization attacks</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="imgs/favicon.ico" type="image/x-icon">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+
+       /*
+       transparent pictures
+       */
+       img.real_transparency {
+           background:none !important;
+           border:none !important;
+           box-shadow:none !important;
+       }
+
+			 /*
+			 Slides with two columns
+			 */
+			.left_right:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-transition="zoom">
+					<pre><code data-trim data-noescape>
+whoami
+  </code></pre>
+
+					<pre><code data-trim data-noescape>
+it-sec-enthusiast
+pentester
+coder
+secf00tprint@gmail.com
+  </code></pre>
+				</section>
+
+				<section data-transition="zoom">
+					<h1 style="color:#DDDDBB">Deserialization attacks</h1>
+				</section>
+
+				<section data-transition="zoom">
+					<a href="https://owasp.org/www-project-top-ten/">OWASP</a>
+				</section>
+
+				<section data-transition="zoom">
+					<a href="https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=deserialization">CVE</a>
+				</section>
+
+				<section data-background-image="imgs/Serialization.jpg" data-background-size="100%" data-state="blur">
+						<h1 style="color:#000000">Serialization: What is it?</h1>
+				</section>
+
+				<section data-background-image="imgs/Serialization.jpg" data-background-size="100%">
+
+				</section>
+
+				<section data-background-image="imgs/presents.jpg" data-background-size="100%" data-state="blur">
+					<h1 style="color:#DDDDBB">And what about Deserialization Attacks?</h1>
+				</section>
+
+				<section data-background-image="imgs/presents.jpg" data-background-size="100%">
+				</section>
+
+				<section data-background-image="imgs/matroschka.png" data-background-size="100%">
+				</section>
+
+				<section data-background-image="imgs/matroschka2.png" data-background-size="300px">
+				</section>
+
+				<section data-transition="zoom">
+					<a href="https://portswigger.net/web-security/deserialization">Attacker gets serialized data and can modify it</a>
+				</section>
+
+				<section data-transition="zoom">
+					<p>Demo</p>
+				</section>
+
+				<section data-transition="zoom">
+					<p>Don't use serialization except absolutely necessary</p> 
+					<p>Don't give it to the user</p>
+                    <p>Check integrity before if it is possible</p>
+					<a href="https://christian-schneider.net/JavaDeserializationSecurityFAQ.html">Java</a>
+				</section>
+
+				<section data-transition="zoom">
+					<p>Thank you</p>
+					<p>Any questions?</p>
+				</section>
+
+			</div>
+		</div>
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+
+				// Parallax background image
+	parallaxBackgroundImage: 'imgs/fractal-1812490_gray_dark.png', // e.g. "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
+
+	// Parallax background size
+	parallaxBackgroundSize: '1920x 1402px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+
+	// Number of pixels to move the parallax background per slide
+	// - Calculated automatically unless specified
+	// - Set to 0 to disable movement along an axis
+	parallaxBackgroundHorizontal: 120,
+	parallaxBackgroundVertical: 100,
+
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

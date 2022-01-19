@@ -30,14 +30,14 @@ https://logging.apache.org/log4j/2.x/security.html
 
 https://log4j.kringlecon.com/?challenge=log4jblue
 
-Which java Version '${java:version}' ?
-
 https://bishopfox.com/blog/log4j-zero-day-cve-2021-44228
 https://github.com/google/log4jscanner
 
 https://github.com/fullhunt/log4j-scan
 
 https://github.com/Cybereason/Logout4Shell
+
+https://github.com/Neo23x0/log4shell-detector
 
 Better scan before doing lists
 

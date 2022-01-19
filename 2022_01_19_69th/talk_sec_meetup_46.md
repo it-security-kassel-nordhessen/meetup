@@ -30,7 +30,12 @@ https://logging.apache.org/log4j/2.x/security.html
 
 https://log4j.kringlecon.com/?challenge=log4jblue
 
-https://bishopfox.com/blog/log4j-zero-day-cve-2021-44228
+## Solution
+
+https://secf00tprint.github.io/blog/hhc/2021/writeup/en#bonus-blue-log4jack
+
+## Defender Stuff
+
 https://github.com/google/log4jscanner
 
 https://github.com/fullhunt/log4j-scan
@@ -39,9 +44,18 @@ https://github.com/Cybereason/Logout4Shell
 
 https://github.com/Neo23x0/log4shell-detector
 
+https://yekta-it.de/blog/ein-monat-log4j-was-haben-wir-gelernt
+
 Better scan before doing lists
+
+## Canaries
+
+https://help.canary.tools/hc/en-gb/articles/4413465229201
 
 # Red
 
 https://log4j.kringlecon.com/?challenge=log4jred
 
+## Solution
+
+https://secf00tprint.github.io/blog/hhc/2021/writeup/en#bonus-red-log4jack
